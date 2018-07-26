@@ -16,6 +16,8 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const ordersRoutes=require("./routes/orders");
+const foodsRoutes=require("./routes/foods");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,6 +39,8 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/orders", ordersRoutes(knex));
+// app.use("/api/foods", foodsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
