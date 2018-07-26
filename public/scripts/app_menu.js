@@ -23,7 +23,7 @@ $(() => {
               <div class="col-sm-2 col-xs-12 food-item-qty">
                 <p class="food-item-price">$${food.price / 100}</p>
                 <p>Quantity:</p>
-                <input type="number" min="0" max="99" value="0">
+                <input type="number" min="0" max="99" name="item_${food.id}" value="0">
               </div>
             </div>
           </div>

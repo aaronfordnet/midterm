@@ -3,13 +3,13 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return Promise.all([
         knex('order_foods').insert({
-          order_id: 10, food_id: 10}),
+          order_id: 1, food_id: 1}),
         knex('order_foods').insert({
-          order_id: 10, food_id: 10}),
+          order_id: 1, food_id: 2}),
         knex('order_foods').insert({
-          order_id: 11, food_id: 11}),
+          order_id: 2, food_id: 1}),
         knex('order_foods').insert({
-          order_id: 12, food_id: 12})
+          order_id: 3, food_id: 3})
       ]);
     });
 };

@@ -53,7 +53,24 @@ app.get("/:id", (req, res) => {
   res.render("orderstatus");
 });
 
+// SUBMIT ORDER
 
+app.post('/', (req, res) => {
+  console.log(req.body);
+  let orderName = req.body.name;
+  let orderPhone = req.body.phone;
+  let orderTime = new Date().getTime();
+
+  console.log(orderName, orderPhone, orderTime);
+  // let newID = randomID();
+  // req.session.order_id = newID
+  // knex('orders').insert {id: newID, name: req.body.name, phone}
+  //
+  // .then(knex('order_foods')insert{ order_id: newID})
+  console.log('time: ', orderTime);
+
+  res.redirect('/')
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
