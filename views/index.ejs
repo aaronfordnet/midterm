@@ -1,18 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Bendito Taqueria</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
 
-  <body>
-    <h1>Order #</h1>
-    <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Benditos!</h4>
-  </body>
+<body>
+  <h1 class="text-center">Bendito Taqueria Order #</h1>
+  <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Benditos!</h4>
+
+  <div class="container" style="max-width: 800px; background: #eee; padding: 40px;">
+    <form class="menu" action="/" method="post">
+      <h2 class="text-center">Order Takeout</h2>
+      <br>
+
+      <div class="row">
+
+        <div class="col-sm-12 col-xs-6" style="margin-bottom: 20px;">
+
+          <div class="row" style="display: flex; flex-wrap: wrap;">
+            <div class="col-sm-3 col-xs-12" style="background: #aaa; padding: 0;"><img style="width: 100%;" src="https://img1.cookinglight.timeinc.net/sites/default/files/styles/medium_2x/public/1519665233/slow-cooker-carnitas-tacos-ck-1804p38.jpg"></div>
+            <div class="col-sm-7 col-xs-12" style="background: #ddd;">
+              <h3>Original Tacos (5)</h3>
+              <p>Guacamole, pinto beans, purple cabbage roasted tomato salsa, cheese, and sour cream</p>
+
+            </div>
+            <div class="col-sm-2 col-xs-12" style="background: #ddd; padding: 0 10px 0 0; text-align: center;">
+              <br>
+              <p><strong>12.99</strong></p>
+              <p>Quantity:</p>
+              <input type="number" min="0" max="99" value="0">
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-12 col-xs-6">
+
+          <div class="row" style="display: flex; flex-wrap: wrap;">
+            <div class="col-sm-3 col-xs-12" style="background: #aaa; padding: 0;"><img style="width: 100%;" src="https://www.onceuponachef.com/images/2018/03/Breakfast-Burritos-575x430.jpg"></div>
+            <div class="col-sm-7 col-xs-12" style="background: #ddd;">
+              <h3>Stella Baked Burrito</h3>
+              <p>Spicy Mexican corn mix, pinto beans, fresh jalapeños, cheese, fresh-cut tomato salsa, sour cream, and crushed tortilla chips</p>
+
+            </div>
+            <div class="col-sm-2 col-xs-12" style="background: #ddd; padding: 0 10px 0 0; text-align: center;">
+              <br>
+              <p><strong>9.99</strong></p>
+              <p>Quantity:</p>
+              <input type="number" min="0" max="99" value="0">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <br>
+      <div class="form-row text-center">
+        <div class="col-sm-5">
+          <input type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" placeholder="Phone Number">
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
 </html>

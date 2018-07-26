@@ -6,7 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 //send results obj with foods ordered and quantity;
   router.get("/", (req, res) => {
-          knex("orders")
+      knex("orders")
       .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
       .distinct("orders.name","orders.id")
       .select()

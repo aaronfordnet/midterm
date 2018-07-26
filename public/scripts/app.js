@@ -11,6 +11,7 @@ $(() => {
 
   $.ajax({
     method: "GET",
+<<<<<<< HEAD
     url: "/api/orders"
   }).done((orders) => {
     console.log(orders[1]);
@@ -35,4 +36,3 @@ $(() => {
   //     $("<div>").text(food.name).appendTo($("body"));
   //   }
   // });;
-});
