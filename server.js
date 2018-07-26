@@ -5,6 +5,9 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
@@ -56,18 +59,25 @@ app.get("/:id", (req, res) => {
 // SUBMIT ORDER
 
 app.post('/', (req, res) => {
-  console.log(req.body);
+  console.log('Post request received');
+  let body = req.body;
   let orderName = req.body.name;
   let orderPhone = req.body.phone;
   let orderTime = new Date().getTime();
-
   console.log(orderName, orderPhone, orderTime);
-  // let newID = randomID();
-  // req.session.order_id = newID
-  // knex('orders').insert {id: newID, name: req.body.name, phone}
-  //
-  // .then(knex('order_foods')insert{ order_id: newID})
-  console.log('time: ', orderTime);
+
+  // Twilio message to restaurant
+  console.log('sending text message');
+  client.messages.create({
+    from: '+16049016036',
+    to: '+17789261236',
+    body: `Hi ${orderName}! Thank you for placing an order from Benditos 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
+     })
+    .then(message => {
+      console.log('Reply from Twilio');
+      console.log(`ID: ${message.sid}`)
+      //console.log(message)
+    }).done(console.log('Text sent to restaurant'));
 
   res.redirect('/')
 });
