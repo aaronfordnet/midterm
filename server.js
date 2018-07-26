@@ -66,7 +66,11 @@ app.post('/', (req, res) => {
   let orderTime = new Date().getTime();
   console.log(orderName, orderPhone, orderTime);
 
+  // Write to DB
+
+
   // Twilio message to restaurant
+/*
   console.log('sending text message');
   client.messages.create({
     from: '+16049016036',
@@ -76,9 +80,10 @@ app.post('/', (req, res) => {
     .then(message => {
       console.log('Reply from Twilio');
       console.log(`ID: ${message.sid}`)
-      //console.log(message)
     }).done(console.log('Text sent to restaurant'));
+*/
 
+  // Response
   res.redirect('/')
 });
 

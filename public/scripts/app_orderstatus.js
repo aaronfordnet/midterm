@@ -4,7 +4,7 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "api/orderstatus/2"
+    url: "api/orderstatus/20001"
   }).done((orders) => {
     for (let order of orders) {
       console.log(order);

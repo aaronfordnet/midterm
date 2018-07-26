@@ -1,4 +1,4 @@
-/jshint esversion: 6
+//jshint esversion: 6
 "use strict";
 
 const express = require('express');
@@ -7,7 +7,6 @@ const router = express.Router();
 module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
-      req.params.id);
     var order_id = req.params.id;
 
     knex("orders")
