@@ -1,13 +1,16 @@
+//jshint esversion: 6
+// "use strict";
+
 $(() => {
 
   $.ajax({
     method: "GET",
     url: "/api/menu"
   }).done((foods) => {
-    for(let food of foods) {
+    for (let food of foods) {
       console.log(food, foods);
-      let $item = $('<div>').addClass('col-sm-12 col-xs-6 food-item').attr('id',`${food.id}`);
-        $item.html(`
+      let $item = $('<div>').addClass('col-sm-12 col-xs-6 food-item').attr('id', `${food.id}`);
+      $item.html(`
           <div class="col-sm-12 col-xs-6 food-item">
             <div class="row food-item-row">
               <div class="col-sm-3 col-xs-12 food-item-img">
@@ -25,25 +28,25 @@ $(() => {
             </div>
           </div>
         `);
-        $('#menu-list').prepend($item);
+      $('#menu-list').prepend($item);
     }
   });
 
-    // $('form.menu').on('submit', function(event){
-    //   $.ajax({
-    //     method: "POST",
-    //     url: "/1"
-    //   })
-    // })
+  // $('form.menu').on('submit', function(event){
+  //   $.ajax({
+  //     method: "POST",
+  //     url: "/1"
+  //   })
+  // })
 
 
-})
+});
 
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/foods"
-  // }).done((foods) => {
-  //   for(food of foods) {
-  //     $("<div>").text(food.name).appendTo($("body"));
-  //   }
-  // });;
+// $.ajax({
+//   method: "GET",
+//   url: "/api/foods"
+// }).done((foods) => {
+//   for(food of foods) {
+//     $("<div>").text(food.name).appendTo($("body"));
+//   }
+// });;
