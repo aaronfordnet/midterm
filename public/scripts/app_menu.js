@@ -2,7 +2,7 @@ $(() => {
 
   $.ajax({
     method: "GET",
-    url: "/api/foods"
+    url: "/api/menu"
   }).done((foods) => {
     for(let food of foods) {
       console.log(food, foods);
