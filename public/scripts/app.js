@@ -1,32 +1,43 @@
 $(() => {
 
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
-
   $.ajax({
     method: "GET",
-<<<<<<< HEAD
-    url: "/api/orders"
-  }).done((orders) => {
-    console.log(orders[1]);
-    for(order of orders) {
-      console.log(order);
-      if(order.imgurl){
-      $("<div>").text(order.name).appendTo($("body"))
-      $('body').append(`<img src="${order.imgurl}" height="120px" width="120px">`);
-      $("<div>").text(order.count).appendTo($("body"));
-    } else{
-      $("<div>").text(`Hi ${order.name}! Here's your order:`).appendTo($("body"))
-      $("h1").append(`${order.id} Status:`)
+    url: "/api/foods"
+  }).done((foods) => {
+    for(let food of foods) {
+      console.log(food, foods);
+      let $item = $('<div>').addClass('col-sm-12 col-xs-6 food-item').attr('id',`${food.id}`);
+        $item.html(`
+          <div class="col-sm-12 col-xs-6 food-item">
+            <div class="row food-item-row">
+              <div class="col-sm-3 col-xs-12 food-item-img">
+                <img src=${food.imgurl} />
+              </div>
+              <div class="col-sm-7 col-xs-12 food-item-description">
+                <h3>${food.name}</h3>
+                <p>${food.description}</p>
+              </div>
+              <div class="col-sm-2 col-xs-12 food-item-qty">
+                <p class="food-item-price">$${food.price / 100}</p>
+                <p>Quantity:</p>
+                <input type="number" min="0" max="99" value="0">
+              </div>
+            </div>
+          </div>
+        `);
+        $('#menu-list').prepend($item);
     }
-    }
-  });;
+  });
+
+    // $('form.menu').on('submit', function(event){
+    //   $.ajax({
+    //     method: "POST",
+    //     url: "/1"
+    //   })
+    // })
+
+
+})
 
   // $.ajax({
   //   method: "GET",

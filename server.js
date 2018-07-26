@@ -40,12 +40,19 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/orders", ordersRoutes(knex));
-// app.use("/api/foods", foodsRoutes(knex));
+// app.use("/api/orders/:id", ordersRoutes(knex));
+app.use("/api/foods", foodsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
+// Order Page
+app.get("/:id", (req, res) => {
+  res.render("order");
+});
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

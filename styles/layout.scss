@@ -5,3 +5,39 @@ body {
     color: #244751;
   }
 }
+
+
+/* ===================
+      Menu Items
+=================== */
+div.food-item {
+  margin-bottom: 20px;
+}
+
+div.food-item-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.food-item-img {
+  background: #ddd;
+  padding: 0;
+}
+
+div.food-item-img img {
+  width: 100%;
+}
+
+div.food-item-qty {
+  background: #ddd;
+  padding: 0 10px 0 0;
+  text-align: center;
+}
+
+div.food-item-description {
+  background: #ddd;
+}
+
+p.food-item-price {
+  font-weight: 800;
+}
