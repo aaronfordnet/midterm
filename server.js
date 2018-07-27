@@ -79,7 +79,6 @@ app.post('/', (req, res) => {
     }
   }
 
-
   console.log(itemsArray);
   console.log(quantityArray);
 
@@ -111,7 +110,6 @@ app.post('/', (req, res) => {
        // Response
     res.redirect(`/orders/${orderID}`);
     })
-
 
 });
 
