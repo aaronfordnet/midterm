@@ -17,7 +17,7 @@
       if (order.imgurl) { %>
         <div> <%= order.name %> </div>
         <img src="<%= order.imgurl%>" height="120px" width="120px">
-        <div> <%= order.count %> </div>
+        <span> <%= order.count %> </span> <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
       <% } else { %>
 
       <h1 class="text-center">Bendito's Taqueria Order #<%= order.id %></h1>
@@ -26,6 +26,10 @@
       <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Bendito's's!</h4>
       <% }
     } %>
+    <div class="total-container">
+    <span class="total">Total $</span>
+    <span id="order-total"></span>
+  </div>
 </body>
 
 </html>
