@@ -43,7 +43,7 @@ module.exports = (knex) => {
                 });
             });
         }
-      })
+      });
     }
     testID(order_id);
   });
