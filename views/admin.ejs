@@ -14,9 +14,8 @@
 
 <body>
   <h1 class="text-center logo">Bendito's Taqueria</h1>
-  <div class="container menu">
+  <div class="container">
 
-    <form class="menu" action="/" method="post">
       <h2 class="text-center">Order Takeout</h2>
       <br>
       <% for (let order of allOrders) {
@@ -32,25 +31,7 @@
       <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Bendito's's!</h4>
       <% }
     } %>
-      <!-- START Inster Area -->
-      <div id="menu-list" class="row">
-        <!-- END Insert Area -->
-      </div>
-      <br>
-      <div class="form-row text-center">
-        <div class="col-sm-5">
-          <input type="text" class="form-control" placeholder="Name" name="name">
-        </div>
-        <div class="col-sm-5">
-          <input type="text" id="phone" class="form-control phoneNumber" placeholder="Phone Number" name="phone">
-        </div>
-        <div class="col-sm-2">
-          <button type="submit" value="submit" class="btn btn-primary">Place Order</button>
-        </div>
-      </div>
-    </form>
-  </div>
+
 </body>
 
 </html>
-

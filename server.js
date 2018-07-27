@@ -93,7 +93,7 @@ app.post('/', (req, res) => {
     for(var i = 0; i < quantityArray[index]; i++){
       knex('order_foods').insert({order_id : orderID, food_id: item}).then();
     }
-  })
+  });
 
   // Twilio message to restaurant
 
