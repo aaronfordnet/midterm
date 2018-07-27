@@ -117,9 +117,6 @@ app.post('/', (req, res) => {
 */
 
 
-
-res.redirect('/orders/20001');
-
 });
 
 app.listen(PORT, () => {
