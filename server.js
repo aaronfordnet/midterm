@@ -18,6 +18,7 @@ const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
 
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orderstatus");
@@ -73,22 +74,29 @@ app.post('/', (req, res) => {
     if(obj.startsWith('item_') && body[obj] > 0){
       itemsArray.push(obj.replace('item_',''));
       quantityArray.push(body[obj]);
-
-      // stuffArray.push({
-      //   itemid: ___,
-      //   quantity: __,
-      // })
     }
   }
+
+
   console.log(itemsArray);
   console.log(quantityArray);
-  itemsArray.forEach((item, index) => {
+
+  knex('orders')
+    .returning('id')
+    .insert({ name: orderName, phone: orderPhone})
+    .then((id) => {
+      let orderID = parseInt(id);
+      console.log(orderID, id);
+      itemsArray.forEach((item, index) => {
     for(var i = 0; i < quantityArray[index]; i++){
-      knex.select('foods.name').from('foods').where({id: item}).then((results) => {
-        console.log(results);
-      });
+      knex('order_foods').insert({order_id : orderID, food_id: item}).then();
     }
   })
+       // Response
+    res.redirect(`/orders/${orderID}`);
+    })
+
+
 
   // console.log(orderName, orderPhone, orderTime);
 
@@ -108,8 +116,7 @@ app.post('/', (req, res) => {
     }).done(console.log('Text sent to restaurant'));
 */
 
- // Response
-  // res.redirect('/orders/' + "4")
+
 
 res.redirect('/orders/20001');
 
