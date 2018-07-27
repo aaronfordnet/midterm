@@ -10,10 +10,10 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("orders")
-      .then((results) => {
-        let tempObj = { results };
-        console.log(results);
-        res.render("admin", tempObj);
+      .then((allOrders) => {
+        let orders = { allOrders };
+        console.log(orders);
+        res.render("admin", orders);
     });
   });
 
