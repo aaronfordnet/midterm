@@ -12,6 +12,13 @@ body {
       Menu Items
 =================== */
 
+.container .menu {
+  max-width: 800px;
+  background: #eee;
+  padding: 40px 20px;
+  margin: 10px auto 50px;
+}
+
 div.food-item {
   margin-bottom: 20px;
 }
@@ -32,7 +39,7 @@ div.food-item-img img {
 
 div.food-item-qty {
   background: #ddd;
-  padding: 0 10px 0 0;
+  padding: 10px;
   text-align: center;
 }
 
