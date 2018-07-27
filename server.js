@@ -11,16 +11,12 @@ const client = require('twilio')(accountSid, authToken);
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
-const cookieSession = require('cookie-session');
 const app = express();
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
-app.use(cookieSession({
-  keys: ['secret']
-}))
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -104,7 +100,7 @@ app.post('/', (req, res) => {
   client.messages.create({
     from: '+16049016036',
     to: '+17789261236',
-    body: `Hi ${orderName}! Thank you for placing an order from Benditos 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
+    body: `Hi ${orderName}! Thank you for placing an order from Bendito's's 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
      })
     .then(message => {
       console.log('Reply from Twilio');
