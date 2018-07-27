@@ -8,9 +8,7 @@ $(() => {
     url: "/api/menu"
   }).done((foods) => {
     for (let food of foods) {
-      let $item = $('<div>').addClass('col-sm-12 col-xs-6 food-item').attr('id', `${food.id}`);
-      $item.html(`
-          <div class="col-sm-12 col-xs-6 food-item">
+      let $item = $('<div>').addClass('col-sm-12 col-xs-5 food-item').attr('id', `${food.id}`).html(`
             <div class="row food-item-row">
               <div class="col-sm-3 col-xs-12 food-item-img">
                 <img src=${food.imgurl} />
@@ -25,24 +23,42 @@ $(() => {
                 <input class="quantity" type="number" min="0" max="99" name="item_${food.id}" value="0">
               </div>
             </div>
-          </div>
         `);
       $('#menu-list').prepend($item);
     }
   });
 
+  function getQuantity() {
+    let total = 0;
+    let $qtyInputs = $("input.quantity");
+    $qtyInputs.each(function(index) {
+      total += Number($(this).val());
+    });
+    return total;
+  }
+
+  function displayError(message) {
+    let $errMsg = $('p.error-message');
+    $errMsg.fadeOut( "fast", function() {
+      $errMsg.text(message);
+      $errMsg.fadeIn('fast');
+    });
+  }
+
   function validateInputs() {
-    let name;
-    let phone;
-    name = document.getElementById("name").value;
-    phone = document.getElementById("phone").value;
+    let name = $('#name').val().trim();
+    let phone = $('#phone').val();
+    let quantity = getQuantity();
     if (name == "") {
-      alert("Please enter a name");
+      displayError("Please enter your name");
       return false;
     } else if (phone.length < 14) {
-      alert("Please enter a phone number");
+      displayError("Please enter a valid phone number, including area code");
       return false;
-    };
+    } else if (quantity <= 0) {
+      displayError("Order can't be empty, please add something to your order");
+      return false
+    }
     return true;
   }
 
@@ -50,7 +66,7 @@ $(() => {
   document.getElementById("submit").addEventListener("click", function(event){
     let pass = validateInputs();
     if (!pass) {
-      event.preventDefault()
+      event.preventDefault();
     }
   });
 
