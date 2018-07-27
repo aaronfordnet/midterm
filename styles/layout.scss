@@ -14,7 +14,7 @@ h1.logo {
 
 
 /* ===================
-      Menu Items
+      Menu Page
 =================== */
 
 .container.menu {
@@ -76,4 +76,63 @@ input.quantity {
 div.total-container{
   font-size: 2.5em;
   float:right;
+/* ===================
+      Admin Page
+=================== */
+
+.container.admin {
+  max-width: 800px;
+  background: #eee;
+  padding: 20px 40px 40px;
+  margin: 10px auto 50px;
+}
+
+div.admin-item-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.admin-item-head {
+  background-color: #aaa;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.admin-item-head p {
+  margin-top: 10px;
+  text-align: right;
+}
+
+div.admin-item-status {
+  background-color: #aaa;
+}
+
+.admin-item-status > .status {
+  color: #7b7b7b;
+  text-align: center;
+}
+
+span.current {
+  color: #3479b7;
+}
+
+div.admin-item-foods {
+  background-color: #ccc;
+  padding: 10px;
+}
+
+div.admin-item-confirm {
+  background-color: #ccc;
+  text-align: center;
+  padding: 10px 10px 20px 10px;
+}
+
+input.eta-time {
+  font-size: 1.5em;
+  width: 60px;
+  text-align: center;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
