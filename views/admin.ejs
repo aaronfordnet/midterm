@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Benditos Taqueria</title>
+  <title>Bendito's Taqueria</title>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -12,8 +12,9 @@
 </head>
 
 <body>
-  <h1 class="text-center">Bendito Taqueria</h1>
+  <h1 class="text-center">Bendito's Taqueria</h1>
   <div class="container menu">
+
     <form class="menu" action="/" method="post">
       <h2 class="text-center">Order Takeout</h2>
       <br>
@@ -27,7 +28,6 @@
           <input type="text" class="form-control" placeholder="Name" name="name">
         </div>
         <div class="col-sm-5">
-
           <input type="text" id="phone" class="form-control phoneNumber" placeholder="Phone Number" name="phone">
         </div>
         <div class="col-sm-2">
@@ -39,3 +39,22 @@
 </body>
 
 </html>
+
+
+<!--
+<body>
+  <h1 class="text-center">Bendito's Taqueria Order #</h1>
+  <% for (let order of newArray) {
+      if (order.imgurl) { %>
+        <div> <%= order.name %> </div>
+        <img src="<%= order.imgurl%>" height="120px" width="120px">
+        <div> <%= order.count %> </div>
+      <% } else { %>
+      <div> Hi <%= order.name %> Here's your order: </div>
+      <div> Status: </div>
+      <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Bendito's's!</h4>
+       <%= order.id %>
+      <% }
+    } %>
+</body>
+-->

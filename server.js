@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
   client.messages.create({
     from: '+16049016036',
     to: '+17789261236',
-    body: `Hi ${orderName}! Thank you for placing an order from Benditos 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
+    body: `Hi ${orderName}! Thank you for placing an order from Bendito's's 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
      })
     .then(message => {
       console.log('Reply from Twilio');
