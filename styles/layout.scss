@@ -66,8 +66,14 @@ p.error-message {
 
 p.food-item-price {
   font-weight: 800;
+  margin:0;
 }
 
 input.quantity {
   width: 50px;
+}
+
+div.total-container{
+  font-size: 2.5em;
+  float:right;
 }
