@@ -62,12 +62,11 @@ app.post('/', (req, res) => {
   console.log('Post request received');
   let body = req.body;
   let orderName = req.body.name;
-  let orderPhone = req.body.phone;
+  let orderPhone = "+1" + (req.body.phone).replace(/[^\w\s]/gi, '').split(' ').join('');
   let orderTime = new Date().getTime();
-  console.log(orderName, orderPhone, orderTime);
+  console.log("Information: ", orderName, orderPhone, orderTime);
 
   // Write to DB
-
 
   // Twilio message to restaurant
 /*
@@ -84,7 +83,7 @@ app.post('/', (req, res) => {
 */
 
   // Response
-  res.redirect('/')
+  res.redirect('/20001');
 });
 
 app.listen(PORT, () => {
