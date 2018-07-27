@@ -10,8 +10,9 @@ module.exports = (knex) => {
     knex("orders")
       .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
       .distinct("orders.id", "orders.name", "orders.phone", "orders.placed_at", "orders.eta", "orders.status")
-      .select()
+      .sum("foods.price")
       .orderBy("placed_at", "desc")
+      .groupBy("orders.id")
       .then((result) => {
         // console.log(result);
         knex("orders")
@@ -24,7 +25,7 @@ module.exports = (knex) => {
             result.items = foodItems;
             let allOrders = result;
             let orders = { allOrders };
-            // console.log(result);
+            console.log(result);
             result.items.forEach(item => {
               // console.log(item.id, item.name);
             });
