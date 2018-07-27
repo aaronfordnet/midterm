@@ -14,7 +14,7 @@ module.exports = (knex) => {
         let orders = { allOrders };
         console.log(orders);
         res.render("admin", orders);
-    });
+      });
   });
 
   return router;
