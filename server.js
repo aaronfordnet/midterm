@@ -46,7 +46,6 @@ app.use(express.static("public"));
 // Mount all resource routes
 // app.use("/api/users", usersRoutes(knex));
 app.use("/orders", ordersRoutes(knex));
-// app.use("/api/orders/:id", ordersRoutes(knex));
 app.use("/api/menu", foodsRoutes(knex));
 app.use("/admin", adminRoutes(knex));
 
@@ -54,10 +53,7 @@ app.use("/admin", adminRoutes(knex));
 app.get("/", (req, res) => {
   res.render("menu");
 });
-// Order Page
-// app.get("/:id", (req, res) => {
-//   res.render("orderstatus");
-// });
+
 
 // SUBMIT ORDER
 
