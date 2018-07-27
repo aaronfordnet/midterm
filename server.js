@@ -94,29 +94,23 @@ app.post('/', (req, res) => {
       knex('order_foods').insert({order_id : orderID, food_id: item}).then();
     }
   })
+
+  // Twilio message to restaurant
+
+  // console.log('sending text message');
+  // client.messages.create({
+  //   from: '+16049016036',
+  //   to: '+17789261236',
+  //   body: `Hello! Mr. ${orderName} has placed an order of ${quantityArray.reduce(function(acc, val) { return Number(acc) + Number(val); }, 0)} items! Please visit xxxx to confirm order.🌮🌮🌮🌮`
+  //    })
+  //   .then(message => {
+  //     console.log('Reply from Twilio');
+  //     console.log(`ID: ${message.sid}`)
+  //   }).done(console.log('Text sent to restaurant'));
+
        // Response
     res.redirect(`/orders/${orderID}`);
     })
-
-
-
-  // console.log(orderName, orderPhone, orderTime);
-
-  // Write to DB
-
-  // Twilio message to restaurant
-/*
-  console.log('sending text message');
-  client.messages.create({
-    from: '+16049016036',
-    to: '+17789261236',
-    body: `Hi ${orderName}! Thank you for placing an order from Bendito's's 🌮  Your phone: ${orderPhone}, order time: ${orderTime}`
-     })
-    .then(message => {
-      console.log('Reply from Twilio');
-      console.log(`ID: ${message.sid}`)
-    }).done(console.log('Text sent to restaurant'));
-*/
 
 
 });
