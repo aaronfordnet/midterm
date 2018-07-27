@@ -11,16 +11,12 @@ const client = require('twilio')(accountSid, authToken);
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
-const cookieSession = require('cookie-session');
 const app = express();
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
-app.use(cookieSession({
-  keys: ['secret']
-}))
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -112,10 +108,10 @@ app.post('/', (req, res) => {
     }).done(console.log('Text sent to restaurant'));
 */
 
-  // Response
-  res.redirect('/order/' + "4")
+ // Response
+  // res.redirect('/orders/' + "4")
 
-  // res.redirect('/20001');
+res.redirect('/orders/20001');
 
 });
 
