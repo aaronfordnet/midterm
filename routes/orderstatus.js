@@ -26,7 +26,10 @@ module.exports = (knex) => {
         .groupBy('foods.name', 'foods.imgurl')
         .then((newResult) => {
           let newArray = result.concat(newResult);
-          res.json(newArray);
+          let tempObj = {
+            newArray
+          }
+          res.render('orderstatus', tempObj);
         });
     });
   });

@@ -13,7 +13,18 @@
 
 <body>
   <h1 class="text-center">Bendito Taqueria Order #</h1>
-  <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Benditos!</h4>
+  <% for (let order of newArray) {
+      if (order.imgurl) { %>
+        <div> <%= order.name %> </div>
+        <img src="<%= order.imgurl%>" height="120px" width="120px">
+        <div> <%= order.count %> </div>
+      <% } else { %>
+      <div> Hi <%= order.name %> Here's your order: </div>
+      <div> Status: </div>
+      <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Benditos!</h4>
+       <%= order.id %>
+      <% }
+    } %>
 </body>
 
 </html>
