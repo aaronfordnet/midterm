@@ -14,29 +14,80 @@
 
 <body>
   <h1 class="text-center logo">Bendito's Taqueria</h1>
-  <div class="container">
-
-      <h2 class="text-center">Order Takeout</h2>
-      <br>
-      <% for (let order of allOrders) {
-      if (order.imgurl) { %>
-        <div> <%= order.name %> </div>
-        <img src="<%= order.imgurl%>" height="120px" width="120px">
-        <div> <%= order.count %> </div>
-      <% } else { %>
-
-      <h1 class="text-center">Bendito's Taqueria Order #<%= order.id %></h1>
-      <div> Hi <%= order.name %> Here's your order: </div>
-      <div> Status: </div>
-      <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Bendito's's!</h4>
-      <% }
-    } %>
+  <div class="container admin">
 
     <form id="confirm">
       <input type="text" name="time">
       <button>CONFIRM</button>
     </form>
 
+    <h2 class="text-center">Manage Orders</h2>
+    <div id="admin-list" class="row">
+      <!-- START Insert Area -->
+
+      <div class="row admin-item-row">
+        <div class="col-sm-12 col-xs-12 admin-item-head">
+          <h4>Order #[order.id] - [order.name] - [order.phone]</h4>
+          <p>Placed at: [order.placed_at]</p>
+        </div>
+        <div class="col-sm-12 col-xs-12 admin-item-status">
+          <h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h5>
+        </div>
+        <div class="col-sm-9 col-xs-12 admin-item-foods">
+          <ul class="order-list">
+            <!-- Append all food items here -->
+            <li>Food item one</li>
+            <li>Food item two</li>
+            <li>Food item three</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-xs-12 admin-item-confirm">
+          <form class="admin" action="/admin" method="post">
+            <p>Preparation time:</p>
+            <input class="eta-time" type="number" min="0" max="99" name="eta" value="">
+            <p>Minutes</p>
+            <button type="submit" value="submit" class="btn btn-primary">Confirm Order</button>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row admin-item-row">
+        <div class="col-sm-12 col-xs-12 admin-item-head">
+          <h4>Order #[order.id] - [order.name] - [order.phone]</h4>
+          <p>Placed at: [order.placed_at]</p>
+        </div>
+        <div class="col-sm-12 col-xs-12 admin-item-status">
+          <h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup</h5>
+        </div>
+        <div class="col-sm-9 col-xs-12 admin-item-foods">
+          <ul class="order-list">
+            <li>Food item one</li>
+            <li>Food item two</li>
+            <li>Food item three</li>
+          </ul>
+        </div>
+        <div class="col-sm-3 col-xs-12 admin-item-confirm">
+          <form class="admin" action="/admin" method="post">
+            <p>Confirmation sent:</p>
+            <p>([orders.eta] minutes)</p>
+            <button type="submit" value="submit" class="btn btn-primary">Order Ready</button>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- END Insert Area -->
+    </div>
+  </div>
 </body>
 
 </html>
+
+
+<!-- id: 20001,
+      name: 'Aaron',
+      phone: '+16049995555',
+      placed_at: 2018-07-27T00:44:40.559Z,
+      eta: null,
+      status: 'Placed' }, -->
