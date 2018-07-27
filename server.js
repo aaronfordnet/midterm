@@ -11,12 +11,16 @@ const client = require('twilio')(accountSid, authToken);
 const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
+const cookieSession = require('cookie-session');
 const app = express();
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
+app.use(cookieSession({
+  keys: ['secret']
+}))
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -42,8 +46,8 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
-app.use("/api/orderstatus", ordersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
+app.use("/orders", ordersRoutes(knex));
 // app.use("/api/orders/:id", ordersRoutes(knex));
 app.use("/api/menu", foodsRoutes(knex));
 
@@ -52,19 +56,45 @@ app.get("/", (req, res) => {
   res.render("menu");
 });
 // Order Page
-app.get("/:id", (req, res) => {
-  res.render("orderstatus");
-});
+// app.get("/:id", (req, res) => {
+//   res.render("orderstatus");
+// });
 
 // SUBMIT ORDER
 
 app.post('/', (req, res) => {
   console.log('Post request received');
   let body = req.body;
+  let itemsArray = [];
+  let quantityArray = [];
   let orderName = req.body.name;
   let orderPhone = "+1" + (req.body.phone).replace(/[^\w\s]/gi, '').split(' ').join('');
   let orderTime = new Date().getTime();
-  console.log("Information: ", orderName, orderPhone, orderTime);
+
+
+
+  for(let obj in body){
+    if(obj.startsWith('item_') && body[obj] > 0){
+      itemsArray.push(obj.replace('item_',''));
+      quantityArray.push(body[obj]);
+
+      // stuffArray.push({
+      //   itemid: ___,
+      //   quantity: __,
+      // })
+    }
+  }
+  console.log(itemsArray);
+  console.log(quantityArray);
+  itemsArray.forEach((item, index) => {
+    for(var i = 0; i < quantityArray[index]; i++){
+      knex.select('foods.name').from('foods').where({id: item}).then((results) => {
+        console.log(results);
+      });
+    }
+  })
+
+  // console.log(orderName, orderPhone, orderTime);
 
   // Write to DB
 
@@ -83,7 +113,10 @@ app.post('/', (req, res) => {
 */
 
   // Response
-  res.redirect('/20001');
+  res.redirect('/order/' + "4")
+
+  // res.redirect('/20001');
+
 });
 
 app.listen(PORT, () => {
