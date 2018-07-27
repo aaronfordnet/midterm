@@ -68,7 +68,7 @@ app.post('/', (req, res) => {
   let itemsArray = [];
   let quantityArray = [];
   let orderName = req.body.name;
-  let orderPhone = req.body.phone;
+  let orderPhone = "+1" + (req.body.phone).replace(/[^\w\s]/gi, '').split(' ').join('');
   let orderTime = new Date().getTime();
 
 
@@ -98,7 +98,6 @@ app.post('/', (req, res) => {
 
   // Write to DB
 
-
   // Twilio message to restaurant
 /*
   console.log('sending text message');
@@ -115,6 +114,9 @@ app.post('/', (req, res) => {
 
   // Response
   res.redirect('/order/' + "4")
+
+  // res.redirect('/20001');
+
 });
 
 app.listen(PORT, () => {
