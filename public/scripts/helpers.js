@@ -28,15 +28,6 @@ function createOrder(order, orderItems) {
   } else if (order.status === "Ready") {
     $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span></h5>').appendTo($status);
   }
-  // if (order.status === "Placed") {
-  //   $('<h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "Confirmed") {
-  //   $('<h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "Ready") {
-  //   $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span> → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "Picked Up") {
-  // $('<h5 class="status">Placed → Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h5>').appendTo($status);
-  // }
 
   const $foods = $("<div>").addClass("col-sm-9 col-xs-12 admin-item-foods").appendTo($order);
   const $ul = $("<ul>").addClass("order-list").appendTo($foods);
