@@ -23,9 +23,7 @@ module.exports = (knex) => {
             .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
             .distinct("orders.name","orders.status", "orders.id")
             .select()
-            .where({
-              order_id: order_id
-            })
+            .where({ order_id: order_id })
             .then((result) => {
               knex("orders")
                 .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
@@ -39,7 +37,6 @@ module.exports = (knex) => {
                   let tempObj = {
                     newArray
                   };
-                  console.log(tempObj);
                   res.render('orderstatus', tempObj);
                 });
             });

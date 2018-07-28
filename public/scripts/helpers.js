@@ -46,7 +46,6 @@ function createOrder(order, orderItems) {
     $("<button>").addClass("btn btn-primary").attr({ value: "submit" }).text("Confirm Order").appendTo($form);
   } else if (order.status === "Confirmed") {
     $("<p>").text("SMS sent to customer!").appendTo($form);
-    console.log(order.eta);
     $("<span>").addClass("eta-confirmed").text(order.eta).appendTo($form);
     $("<p>").text("Minutes").appendTo($form);
     $("<button>").addClass("btn btn-primary").attr({ value: "submit" }).text("Ready for pickup").appendTo($form);
@@ -79,10 +78,13 @@ function appendOrders(orderData) {
 // Loads all the orders via an ajax request
 function loadOrders() {
   $.ajax({
-      method: "GET",
-      url: "/api/admin"
-    })
-    .done(function(orderData) {
+    method: "GET",
+    url: "/api/admin",
+    success: function(orderData) {
       appendOrders(orderData);
-    });
+    },
+    error: function(err) {
+      console.error(err);
+    }
+  });
 }
