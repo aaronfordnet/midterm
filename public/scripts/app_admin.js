@@ -52,11 +52,11 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#Picked Up", function(event) {
+  $("#admin-list").on("submit", "#picked-up", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
-      status: $(this).attr("id"),
+      status: "Picked Up",
     };
 
     $.ajax({
@@ -72,7 +72,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#Picked Up", function(event) {
+  $("#admin-list").on("submit", "#picked-up", function(event) {
     event.preventDefault();
     // let data = {
     //   id: $(this).children('button').attr('id'),

@@ -55,7 +55,7 @@ function createOrder(order, orderItems) {
 
   } else if (order.status === "Ready") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "Picked Up" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ id: "picked-up" }).appendTo($confirm);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
   }
