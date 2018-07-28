@@ -42,16 +42,21 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+// app.use('/public',express.static("public"));
 
 // Mount all resource routes
 // app.use("/api/users", usersRoutes(knex));
 app.use("/orders", ordersRoutes(knex));
 app.use("/api/menu", foodsRoutes(knex));
-app.use("/admin", adminRoutes(knex));
+app.use("/api/admin", adminRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("menu");
+});
+
+app.get("/admin", (req, res) => {
+  res.render("admin");
 });
 
 
@@ -105,9 +110,9 @@ app.post('/', (req, res) => {
 
        // Response
     res.redirect(`/orders/${orderID}`);
-    })
-
+    });
 });
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

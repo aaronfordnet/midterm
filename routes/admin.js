@@ -13,7 +13,7 @@ module.exports = (knex) => {
       .sum("foods.price")
       .orderBy("placed_at", "desc")
       .groupBy("orders.id")
-      .then((result) => {
+      .then((orders) => {
         // console.log(result);
         knex("orders")
           .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
@@ -21,16 +21,17 @@ module.exports = (knex) => {
           // .groupBy("orders.id", "foods.name")
           .orderBy("placed_at", "desc")
           // .where({ order_id: orders.id })
-          .then((foodItems) => {
-            result.items = foodItems;
-            let allOrders = result;
-            let orders = { allOrders };
-            console.log(result);
-            result.items.forEach(item => {
-              // console.log(item.id, item.name);
-            });
+          .then((items) => {
+            // result.items = foodItems;
+            // let allOrders = result;
+            // let items = foodItems;
+            // let orders = { orders, items };
+            // console.log({ orders, items });
+            // result.items.forEach(item => {
+            //   // console.log(item.id, item.name);
+            // });
             // console.log(result.items);
-            res.render('admin', orders);
+            res.json({ orders, items });
           });
       });
   });
