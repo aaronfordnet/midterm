@@ -8,7 +8,6 @@ $(function() {
 
   $("#admin-list").on("submit", "#confirm", function(event) {
     event.preventDefault();
-    alert("hello");
     let id = $(this).children('input').attr('id');
     let minutes = $(this).serialize().replace("eta=", "");
     let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');

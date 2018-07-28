@@ -19,8 +19,8 @@ const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
-
-
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const VoiceResponse = require('twilio').twiml.VoiceResponse;
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orderstatus");
@@ -36,7 +36,9 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -73,8 +75,6 @@ app.post('/', (req, res) => {
   let orderPhone = "+1" + (req.body.phone).replace(/[^\w\s]/gi, '').split(' ').join('');
   let orderTime = new Date().getTime();
 
-
-
   for (let obj in body) {
     if (obj.startsWith('item_') && body[obj] > 0) {
       itemsArray.push(obj.replace('item_', ''));
@@ -82,35 +82,100 @@ app.post('/', (req, res) => {
     }
   }
 
-
+  // Write order to DB and return order id
   knex('orders')
     .returning('id')
-    .insert({ name: orderName, phone: orderPhone })
+    .insert({
+      name: orderName,
+      phone: orderPhone
+    })
     .then((id) => {
       let orderID = parseInt(id);
       itemsArray.forEach((item, index) => {
         for (var i = 0; i < quantityArray[index]; i++) {
-          knex('order_foods').insert({ order_id: orderID, food_id: item }).then();
+          knex('order_foods').insert({
+            order_id: orderID,
+            food_id: item
+          }).then();
         }
       });
 
-      // Twilio message to restaurant
+      // Get order info from DB and send text to restaurant
+      knex("orders")
+        .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
+        .distinct("orders.name", "orders.status", "orders.id")
+        .select()
+        .where({
+          order_id: orderID
+        })
+        .then((result) => {
+          knex("orders")
+            .leftJoin("order_foods", "orders.id", "order_foods.order_id").leftJoin("foods", "order_foods.food_id", "foods.id")
+            .select("foods.imgurl", "foods.price", "foods.name").count('order_foods.order_id')
+            .where({
+              order_id: orderID
+            })
+            .groupBy('foods.name', 'foods.price', 'foods.imgurl')
+            .then((newResult) => {
+              let newArray = result.concat(newResult);
+              let tempObj = {
+                newArray
+              };
 
-      // console.log('sending text message');
-      // client.messages.create({
-      //   from: '+16049016036',
-      //   to: adminPhone,
-      //   body: `Hello! Mr. ${orderName} has placed an order of ${quantityArray.reduce(function(acc, val) { return Number(acc) + Number(val); }, 0)} items! Please visit xxxx to confirm order.🌮🌮🌮🌮`
-      //    })
-      //   .then(message => {
-      //     console.log('Reply from Twilio');
-      //     console.log(`ID: ${message.sid}`)
-      //   }).done(console.log('Text sent to restaurant'));
+              let orderItems = '';
+              (tempObj.newArray).forEach(item => {
+                if (item.count) {
+                  orderItems += item.count + ' x ' + item.name + '\n';
+                }
+              });
+
+              // Twilio message to restaurant
+              console.log('sending text message to restaurant');
+              client.messages.create({
+                  from: '+16049016036',
+                  to: adminPhone,
+                  body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
+                })
+                .then(message => {
+                  console.log('Success! Text sent to restaurant');
+                  console.log(`ID: ${message.sid}`)
+                }).done();
+            });
+        });
 
       // Response
       res.redirect(`/orders/${orderID}`);
     });
 });
+
+// ###### Twilio Inbound ######
+app.post('/sms', (req, res) => {
+  const twiml = new MessagingResponse();
+
+  let reply = req.body.Body;
+  let orderID = ((req.body.Body).split(' '))[0];
+  let eta = ((req.body.Body).split(' '))[1];
+
+  console.log('Received! order ID: ' + orderID + ' ETA: ' + eta);
+
+  // if (req.body.Body == 'hello') {
+  //   twiml.message('Hi!');
+  // } else if (req.body.Body == 'bye') {
+  //   twiml.message('Goodbye');
+  // } else {
+  //   twiml.message(
+  //     'No Body param match, Twilio sends this in the request to your server.'
+  //   );
+  // }
+
+  res.writeHead(200, {
+    'Content-Type': 'text/xml'
+  });
+  res.end(
+    //twiml.toString()
+  );
+});
+// ############################
 
 
 app.listen(PORT, () => {
