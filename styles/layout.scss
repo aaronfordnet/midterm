@@ -120,6 +120,7 @@ div.admin-item-status {
 
 span.current {
   color: #3479b7;
+  font-weight: 600;
 }
 
 div.admin-item-foods {
@@ -139,4 +140,39 @@ input.eta-time {
   text-align: center;
   padding-left: 5px;
   margin-bottom: 5px;
+}
+
+
+/* ===================
+  Order Status Page
+=================== */
+
+div.order-item-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.order-item {
+  background-color: #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+div.order-item-status {
+  background-color: #aaa;
+}
+
+.order-item-status > .status {
+  color: #7b7b7b;
+  text-align: center;
+}
+
+.ordermsg {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.order-item-single {
+  display: flex;
+  justify-content: space-around;
 }

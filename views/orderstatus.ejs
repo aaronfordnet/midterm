@@ -7,29 +7,52 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_orderstatus.js"></script>
 </head>
 
 <body>
+  <h1 class="text-center logo">Bendito's Taqueria</h1>
+  <div class="container menu">
 
-  <% for (let order of newArray) {
-      if (order.imgurl) { %>
-        <div> <%= order.name %> </div>
-        <img src="<%= order.imgurl%>" height="120px" width="120px">
-        <span> <%= order.count %> </span> <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
-      <% } else { %>
+    <h2 class="text-center">Order Status:</h2>
+    <!-- START Inster Area -->
+    <div id="status-list" class="row">
 
-      <h1 class="text-center">Bendito's Taqueria Order #<%= order.id %></h1>
-      <div> Hi <%= order.name %> Here's your order: </div>
-      <div> Status: </div>
-      <h4>Order received successfully!<br>You'll receive a text with an ETA soon!<br>Thank you for choosing Bendito's's!</h4>
-      <% }
-    } %>
-    <div class="total-container">
-    <span class="total">Total $</span>
-    <span id="order-total"></span>
+      <div class="row order-item-row">
+        <div class="col-sm-12 col-xs-12 order-item-status">
+          <h4 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h4>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 order-item">
+
+          <% for (let order of newArray) {
+              if (order.imgurl) { %>
+            <div class="col-sm-12 col-xs-12 order-item-single">
+              <img src="<%= order.imgurl%>" height="120px" width="120px">
+              <p>Item - <%= order.name %></p>
+              <p>Quantity - <%= order.count %></p>
+              <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
+            </div>
+            <% } else { %>
+              <div class="col-sm-12 col-xs-12 order-item">
+                <h3>Thank you for placing an order!</h3>
+                <h4>Your order number is #<%= order.id %></h4>
+                <p class="ordermsg">Hi <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
+                <h4>Status: <%= order.status %></h4>
+                <h4>Here's your order:</h4>
+              </div>
+              <% }
+            } %>
+            <div class="total-container">
+            <span class="total">Total $</span>
+            <span id="order-total"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END Insert Area -->
   </div>
 </body>
-
 </html>
