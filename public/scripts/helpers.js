@@ -23,18 +23,18 @@ function createOrder(order, orderItems) {
   const $status = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-status").appendTo($order);
    if (order.status === "Placed") {
     $('<h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h5>').appendTo($status);
-  } else if (order.status === "confirmed") {
+  } else if (order.status === "Confirmed") {
     $('<h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup</h5>').appendTo($status);
-  } else if (order.status === "ready") {
+  } else if (order.status === "Ready") {
     $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span></h5>').appendTo($status);
   }
   // if (order.status === "Placed") {
   //   $('<h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "confirmed") {
+  // } else if (order.status === "Confirmed") {
   //   $('<h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "ready") {
+  // } else if (order.status === "Ready") {
   //   $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span> → Picked Up</h5>').appendTo($status);
-  // } else if (order.status === "picked-up") {
+  // } else if (order.status === "Picked Up") {
   // $('<h5 class="status">Placed → Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h5>').appendTo($status);
   // }
 
@@ -50,21 +50,21 @@ function createOrder(order, orderItems) {
   const $confirm = $("<div>").addClass("col-sm-3 col-xs-12 admin-item-confirm").appendTo($order);
   if (order.status === "Placed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "confirmed" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ id: "Confirmed" }).appendTo($confirm);
     $("<p>").text("Preparation time:").appendTo($form);
     $("<input>").attr({ type: "number", min: 0, max: 99, name: "eta" }).appendTo($form);
     $("<p>").text("Minutes").appendTo($form);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Confirm Order").appendTo($form);
 
-  } else if (order.status === "confirmed") {
+  } else if (order.status === "Confirmed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "ready" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ id: "Ready" }).appendTo($confirm);
     $("<p>").text(`ETA: ${moment(order.eta).fromNow()}`).appendTo($form);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
 
-  } else if (order.status === "ready") {
+  } else if (order.status === "Ready") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "picked-up" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ id: "Picked Up" }).appendTo($confirm);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
   }
@@ -79,7 +79,7 @@ function filterOrders(orderData) {
     const orderItems = orderData.items.filter(function(item) {
       return order.id === item.id;
     });
-    if (order.status !== "picked-up") {
+    if (order.status !== "Picked Up") {
       filtered.push(createOrder(order, orderItems));
     }
   });

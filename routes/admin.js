@@ -42,7 +42,7 @@ module.exports = (knex) => {
     console.log(timeConfirmed);
     let name = req.body.name;
     if (status === "Placed") {
-      status = "confirmed";
+      status = "Confirmed";
     }
 
     // Updates order info/page and sends SMS to customer
@@ -79,8 +79,8 @@ module.exports = (knex) => {
   router.put("/ready", (req, res) => {
     let id = req.body.id;
     let status = req.body.status;
-    if (status === "confirmed") {
-      status = "ready";
+    if (status === "Confirmed") {
+      status = "Ready";
     }
 
     knex("orders")
@@ -92,12 +92,12 @@ module.exports = (knex) => {
       });
     });
 
-  // Updates order info/page to "picked-up" status
+  // Updates order info/page to "Picked Up" status
   router.put("/pickup", (req, res) => {
     let id = req.body.id;
     let status = req.body.status;
-    if (status === "ready") {
-      status = "picked-up";
+    if (status === "Ready") {
+      status = "Picked Up";
     }
 
     knex("orders")

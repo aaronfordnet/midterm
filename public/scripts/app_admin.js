@@ -6,7 +6,7 @@ $(function() {
 
   loadOrders();
 
-  $("#admin-list").on("submit", "#confirmed", function(event) {
+  $("#admin-list").on("submit", "#Confirmed", function(event) {
     event.preventDefault();
     let id = $(this).children('button').attr('id');
     let minutes = $(this).serialize().replace("eta=", "");
@@ -32,7 +32,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#ready", function(event) {
+  $("#admin-list").on("submit", "#Ready", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
@@ -52,7 +52,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
+  $("#admin-list").on("submit", "#Picked Up", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
@@ -72,7 +72,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
+  $("#admin-list").on("submit", "#Picked Up", function(event) {
     event.preventDefault();
     // let data = {
     //   id: $(this).children('button').attr('id'),
