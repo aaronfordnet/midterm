@@ -100,7 +100,7 @@ $(function() {
     console.log("Time submited.");
 
     $.ajax({
-      method: "POST",
+      method: "PUT",
       url: "/api/admin",
       data: data,
       success: function(minutes) {

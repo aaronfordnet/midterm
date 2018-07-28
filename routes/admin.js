@@ -33,7 +33,7 @@ module.exports = (knex) => {
       });
   });
 
-  router.post("/", (req, res) => {
+  router.put("/", (req, res) => {
     console.log("I HAPPENED");
     let id = req.body.id;
     let minutes = req.body.minutes;
