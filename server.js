@@ -75,9 +75,9 @@ app.post('/', (req, res) => {
 
 
 
-  for(let obj in body){
-    if(obj.startsWith('item_') && body[obj] > 0){
-      itemsArray.push(obj.replace('item_',''));
+  for (let obj in body) {
+    if (obj.startsWith('item_') && body[obj] > 0) {
+      itemsArray.push(obj.replace('item_', ''));
       quantityArray.push(body[obj]);
     }
   }
@@ -87,31 +87,30 @@ app.post('/', (req, res) => {
 
   knex('orders')
     .returning('id')
-    .insert({ name: orderName, phone: orderPhone})
+    .insert({ name: orderName, phone: orderPhone })
     .then((id) => {
       let orderID = parseInt(id);
-      console.log(orderID, id);
       itemsArray.forEach((item, index) => {
-    for(var i = 0; i < quantityArray[index]; i++){
-      knex('order_foods').insert({order_id : orderID, food_id: item}).then();
-    }
-  });
+        for (var i = 0; i < quantityArray[index]; i++) {
+          knex('order_foods').insert({ order_id: orderID, food_id: item }).then();
+        }
+      });
 
-  // Twilio message to restaurant
+      // Twilio message to restaurant
 
-  // console.log('sending text message');
-  // client.messages.create({
-  //   from: '+16049016036',
-  //   to: adminPhone,
-  //   body: `Hello! Mr. ${orderName} has placed an order of ${quantityArray.reduce(function(acc, val) { return Number(acc) + Number(val); }, 0)} items! Please visit xxxx to confirm order.🌮🌮🌮🌮`
-  //    })
-  //   .then(message => {
-  //     console.log('Reply from Twilio');
-  //     console.log(`ID: ${message.sid}`)
-  //   }).done(console.log('Text sent to restaurant'));
+      // console.log('sending text message');
+      // client.messages.create({
+      //   from: '+16049016036',
+      //   to: adminPhone,
+      //   body: `Hello! Mr. ${orderName} has placed an order of ${quantityArray.reduce(function(acc, val) { return Number(acc) + Number(val); }, 0)} items! Please visit xxxx to confirm order.🌮🌮🌮🌮`
+      //    })
+      //   .then(message => {
+      //     console.log('Reply from Twilio');
+      //     console.log(`ID: ${message.sid}`)
+      //   }).done(console.log('Text sent to restaurant'));
 
-       // Response
-    res.redirect(`/orders/${orderID}`);
+      // Response
+      res.redirect(`/orders/${orderID}`);
     });
 });
 

@@ -14,7 +14,8 @@ exports.seed = function(knex, Promise) {
           id: 20003,
           name: 'Taylour Em',
           phone: "+16049995557",
-          status: "Confirmed"})
+          status: "Confirmed",
+          eta: 25})
       ]);
     });
 };
