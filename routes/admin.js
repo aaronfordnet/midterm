@@ -88,12 +88,12 @@ module.exports = (knex) => {
       });
     });
 
-  // Updates order info/page to "ready" status
+  // Updates order info/page to "picked-up" status
   router.put("/pickup", (req, res) => {
     let id = req.body.id;
     let status = req.body.status;
     if (status === "ready") {
-      status = "picked_up";
+      status = "picked-up";
     }
 
     knex("orders")

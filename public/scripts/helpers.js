@@ -26,9 +26,9 @@ function createOrder(order, orderItems) {
     $('<h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup → Picked Up</h5>').appendTo($status);
   } else if (order.status === "ready") {
     $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span> → Picked Up</h5>').appendTo($status);
-  } else if (order.status === "picked-up") {
-    $('<h5 class="status">Placed → Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h5>').appendTo($status);
-  }
+  } // else if (order.status === "picked-up") {
+    // $('<h5 class="status">Placed → Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h5>').appendTo($status);
+  // }
 
   const $foods = $("<div>").addClass("col-sm-9 col-xs-12 admin-item-foods").appendTo($order);
   const $ul = $("<ul>").addClass("order-list").appendTo($foods);
@@ -59,11 +59,6 @@ function createOrder(order, orderItems) {
     const $form = $("<form>").addClass("admin").attr({ id: "picked-up" }).appendTo($confirm);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
-  } else if (order.status === "picked-up") {
-
-    const $form = $("<form>").addClass("admin").attr({ id: "done" }).appendTo($confirm);
-    $("<p>").attr({ id: order.id }).text("Order has been picked up").appendTo($form);
-
   }
   return $order;
 }
@@ -76,7 +71,9 @@ function filterOrders(orderData) {
     const orderItems = orderData.items.filter(function(item) {
       return order.id === item.id;
     });
-    filtered.push(createOrder(order, orderItems));
+    if (order.status !== "picked-up") {
+      filtered.push(createOrder(order, orderItems));
+    }
   });
   return filtered;
 }

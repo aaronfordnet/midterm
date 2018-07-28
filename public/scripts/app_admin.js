@@ -12,7 +12,6 @@ $(function() {
     let minutes = $(this).serialize().replace("eta=", "");
     let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');
     let status = $(this).attr("id");
-    console.log("status", status);
     let data = {
       id: id,
       minutes: minutes,
@@ -39,7 +38,6 @@ $(function() {
       id: $(this).children('button').attr('id'),
       status: $(this).attr("id")
     };
-      console.log($(this).attr("id"));
 
     $.ajax({
       method: "PUT",
@@ -54,7 +52,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#pickup", function(event) {
+  $("#admin-list").on("submit", "#picked-up", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
@@ -65,6 +63,26 @@ $(function() {
       method: "PUT",
       url: "/api/admin/pickup",
       data: data,
+      success: function(result) {
+        loadOrders();
+      },
+      error: function(err) {
+        console.error(err);
+      }
+    });
+  });
+
+  $("#admin-list").on("submit", "#picked-up", function(event) {
+    event.preventDefault();
+    // let data = {
+    //   id: $(this).children('button').attr('id'),
+    //   status: $(this).attr("id"),
+    // };
+
+    $.ajax({
+      method: "GET",
+      url: "/api/admin",
+      // data: data,
       success: function(result) {
         loadOrders();
       },
