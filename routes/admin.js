@@ -1,5 +1,5 @@
 //jshint esversion: 6
-"use strict";
+// "use strict";
 require('dotenv').config();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -33,7 +33,6 @@ module.exports = (knex) => {
   });
 
   router.put("/", (req, res) => {
-    console.log("I HAPPENED");
     let id = req.body.id;
     let minutes = req.body.minutes;
     let status = req.body.status;
@@ -52,6 +51,8 @@ module.exports = (knex) => {
         eta: minutes
       }).then((id) => {
         res.json({ result: 'true' });
+      }).error(err => {
+        console.error(err);
       });
 
     // Twilio message to user

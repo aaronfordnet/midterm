@@ -64,7 +64,7 @@ app.get("/admin", (req, res) => {
 });
 
 
-// SUBMIT ORDER
+// SUBMIT ORDER from menu page
 
 app.post('/', (req, res) => {
   console.log('Post request received');

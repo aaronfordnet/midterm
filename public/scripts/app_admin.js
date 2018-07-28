@@ -18,6 +18,7 @@ $(function() {
       status: status,
       name: name
     };
+
     $.ajax({
       method: "PUT",
       url: "/api/admin",
