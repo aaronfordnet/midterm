@@ -18,55 +18,7 @@
     <h2 class="text-center">Manage Orders</h2>
     <div id="admin-list" class="row">
       <!-- START Insert Area -->
-      <article class="row admin-item-row">
-        <div class="col-sm-12 col-xs-12 admin-item-head">
-          <h4 customer="Peter">Order #26 - Peter - 7783233909</h4>
-          <p>Placed at: 11:59 PM</p>
-        </div>
-        <div class="col-sm-12 col-xs-12 admin-item-status">
-          <h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h5>
-        </div>
-        <div class="col-sm-9 col-xs-12 admin-item-foods">
-          <ul class="order-list">
-            <!-- Append all food items here -->
-            <li>Food item one</li>
-            <li>Food item two</li>
-            <li>Food item three</li>
-          </ul>
-        </div>
-        <div class="col-sm-3 col-xs-12 admin-item-confirm">
-          <form id="confirm" class="admin" action="/admin" method="post">
-            <p>Preparation time:</p>
-            <input id="26" class="eta-time" type="number" min="0" max="99" name="eta">
-            <p>Minutes</p>
-            <button type="submit" value="submit" class="btn btn-primary">Confirm Order</button>
-          </form>
-        </div>
-      </article>
-      <article class="row admin-item-row">
-        <div class="col-sm-12 col-xs-12 admin-item-head">
-          <h4>Order #[order.id] - [order.name] - [order.phone]</h4>
-          <p>Placed at: [order.placed_at]</p>
-        </div>
-        <div class="col-sm-12 col-xs-12 admin-item-status">
-          <h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup</h5>
-        </div>
-        <div class="col-sm-9 col-xs-12 admin-item-foods">
-          <ul class="order-list">
-            <li>Food item one</li>
-            <li>Food item two</li>
-            <li>Food item three</li>
-          </ul>
-        </div>
-        <div class="col-sm-3 col-xs-12 admin-item-confirm">
-          <form id="confirm" class="admin" action="/admin" method="post">
-            <p>Preparation time:</p>
-            <input id="20002" class="eta-time" type="number" min="0" max="99" name="eta" value="">
-            <p>Minutes</p>
-            <button type="submit" value="submit" class="btn btn-primary">Confirm Order</button>
-          </form>
-        </div>
-      </article>
+
       <!-- END Insert Area -->
     </div>
   </div>

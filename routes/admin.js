@@ -28,15 +28,6 @@ module.exports = (knex) => {
           .orderBy("placed_at", "desc")
           // .where({ order_id: orders.id })
           .then((items) => {
-            // result.items = foodItems;
-            // let allOrders = result;
-            // let items = foodItems;
-            // let orders = { orders, items };
-            // console.log({ orders, items });
-            // result.items.forEach(item => {
-            //   // console.log(item.id, item.name);
-            // });
-            // console.log(result.items);
             res.json({ orders, items });
           });
       });

@@ -11,7 +11,7 @@ $(() => {
       let $item = $('<div>').addClass('col-sm-12 col-xs-5 food-item').attr('id', `${food.id}`).html(`
             <div class="row food-item-row">
               <div class="col-sm-3 col-xs-12 food-item-img">
-                <img src=${food.imgurl} height = '150px' widows = '150px' />
+                <img src=${food.imgurl} height = '150px' width = '150px' />
               </div>
               <div class="col-sm-7 col-xs-12 food-item-description">
                 <h3>${food.name}</h3>
@@ -66,7 +66,6 @@ $(() => {
       let price = $('.food-item-price', $(this).parent()).text();
       let value = Number(price.replace("$","")).toFixed(2);
       let subtotal = (value * qty).toFixed(2);
-      console.log(value*qty);
       var sum = $('.sum', $(this).parent())
       sum.text(subtotal);
       getTotal();
