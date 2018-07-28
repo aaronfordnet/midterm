@@ -21,6 +21,7 @@ const morgan = require('morgan');
 const knexLogger = require('knex-logger');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+const moment = require('moment');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orderstatus");
@@ -38,7 +39,9 @@ app.use(knexLogger(knex));
 app.set("view engine", "ejs");
 
 app.locals.moment = require('moment');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -133,15 +136,15 @@ app.post('/', (req, res) => {
               // Twilio message to restaurant
 
               console.log('Sending order text to restaurant...');
-              // client.messages.create({
-              //     from: '+16049016036',
-              //     to: adminPhone,
-              //     body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
-              //   })
-              //   .then(message => {
-              //     console.log('Success! Text sent to restaurant');
-              //     console.log(`ID: ${message.sid}`)
-              //   }).done();
+              client.messages.create({
+                  from: '+16049016036',
+                  to: adminPhone,
+                  body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
+                })
+                .then(message => {
+                  console.log('Success! Text sent to restaurant');
+                  console.log(`ID: ${message.sid}`)
+                }).done();
             });
         });
 
@@ -155,27 +158,58 @@ app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
 
   let reply = req.body.Body;
-  let orderID = ((req.body.Body).split(' '))[0];
-  let eta = ((req.body.Body).split(' '))[1];
+  let id = (reply.split(' '))[0];
+  let minutes = (reply.split(' '))[1];
+  let timeConfirmed = moment().utcOffset("-0700").add(minutes, 'minutes').format();
+  let status = 'Confirmed';
 
-  console.log('Received! order ID: ' + orderID + ' ETA: ' + eta);
 
-  // if (req.body.Body == 'hello') {
-  //   twiml.message('Hi!');
-  // } else if (req.body.Body == 'bye') {
-  //   twiml.message('Goodbye');
-  // } else {
-  //   twiml.message(
-  //     'No Body param match, Twilio sends this in the request to your server.'
-  //   );
-  // }
+  knex("orders")
+    .where({
+      id: id
+    })
+    .update({
+      status: status,
+      eta: timeConfirmed
+    }).then((id) => {
+      res.json({
+        result: 'true'
+      });
 
-  res.writeHead(200, {
-    'Content-Type': 'text/xml'
-  });
-  res.end(
-    //twiml.toString()
-  );
+
+      // knex("orders")
+      //   .select('name')
+      //   .where('id', id)
+      //   .then((name) => {
+      //
+      //     // Twilio message to user
+      //
+      //     console.log('Sending confirmation text to customer...');
+      //     client.messages.create({
+      //         from: '+16049016036',
+      //         to: adminPhone,
+      //         body: 'Hi ' + name + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://localhost:8080/orders/' + id + ' to track your order.'
+      //       })
+      //       .then(message => {
+      //         console.log('Success! Confirmation text sent to customer');
+      //         console.log(`ID: ${message.sid}`)
+      //       }).done();
+      //
+      //   })
+
+    }).error(err => {
+      console.error(err);
+    });
+
+    twiml.message('Confirmation received! Order #' + id + ' will be notified with approximate pickup time: ' + minutes + 'minutes.')
+
+
+    res.writeHead(200, {
+      'Content-Type': 'text/xml'
+    });
+    res.end(
+      twiml.toString()
+    );
 });
 
 
