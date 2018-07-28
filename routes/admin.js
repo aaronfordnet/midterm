@@ -55,15 +55,15 @@ module.exports = (knex) => {
      // Twilio message to user
 
   console.log('sending text message');
-  client.messages.create({
-    from: '+16049016036',
-    to: customerPhone,
-    body: `Hello ${name}! Your order should be ready for pick up in ${minutes} minutes! View your order status at http://localhost:8080/orders/${id} to know when to pick it up!`
-     })
-    .then(message => {
-      console.log('Reply from Twilio');
-      console.log(`ID: ${message.sid}`)
-    }).done(console.log('Text sent to client'));
+  // client.messages.create({
+  //   from: '+16049016036',
+  //   to: customerPhone,
+  //   body: `Hello ${name}! Your order should be ready for pick up in ${minutes} minutes! View your order status at http://localhost:8080/orders/${id} to know when to pick it up!`
+  //    })
+  //   .then(message => {
+  //     console.log('Reply from Twilio');
+  //     console.log(`ID: ${message.sid}`)
+  //   }).done(console.log('Text sent to client'));
 
   });
 

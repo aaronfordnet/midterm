@@ -36,7 +36,7 @@ exports.seed = function(knex, Promise) {
           price: 395,
           category: 'food'}),
         knex('foods').insert({
-          name: 'Carne Asada Burrito (Grilled Steak)',
+          name: 'Grilled Carne Asada Steak Burrito',
           description: "Filled with Mexican rice, smashed beans, grilled onions, shredded lettuce, shredded cabbage, pico de gallo, cilantro",
           imgurl: "http://images.media-allrecipes.com/userphotos/960x960/3757728.jpg",
           price: 1095,
