@@ -22,13 +22,21 @@
 
       <div class="row order-item-row">
         <div class="col-sm-12 col-xs-12 order-item-status">
-          <h4 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h4>
+          <% for (let order of newArray) { %>
+            <% if (order.status === "Placed") { %>
+              <h4 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h4>
+            <% } else if (order.status === "Confirmed") { %>
+              <h4 class="status">Placed→ <span class="current">Confirmed</span> → Ready for Pickup</h4>
+            <% } else if (order.status === "Ready"){ %>
+              <h4 class="status">Placed→ Confirmed → <span class="current">Ready for Pickup</span></h4>
+            <% } %>
+          <% } %>
         </div>
 
         <div class="col-sm-12 col-xs-12 order-item">
 
-          <% for (let order of newArray) {
-              if (order.imgurl) { %>
+          <% for (let order of newArray) { %>
+              <% if (order.imgurl) { %>
             <div class="col-sm-12 col-xs-12 order-item-single">
               <img src="<%= order.imgurl%>" height="120px" width="120px">
               <p>Item - <%= order.name %></p>
