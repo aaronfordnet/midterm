@@ -36,10 +36,9 @@ module.exports = (knex) => {
     let id = req.body.id;
     let minutes = req.body.minutes;
     let status = req.body.status;
-    console.log(req.body.status);
     let name = req.body.name;
     if (status === "Placed") {
-      status = "Confirmed";
+      status = "confirmed";
     }
 
     // Updates order info/page and sends SMS to customer
@@ -71,29 +70,40 @@ module.exports = (knex) => {
 
   });
 
-    router.put("/ready", (req, res) => {
-      let id = req.body.id;
-      // let minutes = req.body.minutes;
-      let status = req.body.status;
-      // let name = req.body.name;
-      if (status === "Confirmed") {
-        status = "Ready";
-      }
 
-      // Updates order info/page and sends SMS to customer
-      knex("orders")
-        .where({
-          id: id
-        })
-        .update({
-          status: status,
-          // eta: minutes
-        }).then((id) => {
-          res.json({ result: 'true' });
-        }).error(err => {
-          console.error(err);
-        });
+  // Updates order info/page to "ready" status
+  router.put("/ready", (req, res) => {
+    let id = req.body.id;
+    let status = req.body.status;
+    if (status === "confirmed") {
+      status = "ready";
+    }
+
+    knex("orders")
+      .where({ id: id })
+      .update({ status: status }).then((id) => {
+        res.json({ result: 'true' });
+      }).error(err => {
+        console.error(err);
       });
+    });
+
+  // Updates order info/page to "ready" status
+  router.put("/pickup", (req, res) => {
+    let id = req.body.id;
+    let status = req.body.status;
+    if (status === "ready") {
+      status = "picked_up";
+    }
+
+    knex("orders")
+      .where({ id: id })
+      .update({ status: status }).then((id) => {
+        res.json({ result: 'true' });
+      }).error(err => {
+        console.error(err);
+      });
+    });
 
 
   return router;

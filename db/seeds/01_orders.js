@@ -5,17 +5,19 @@ exports.seed = function(knex, Promise) {
         knex('orders').insert({
           id: 20001,
           name: 'Aaron',
-          phone: "+16049995555"}),
+          phone: "+16049995555"
+        }),
         knex('orders').insert({
           id: 20002,
           name: 'Raf',
-          phone: "+16049995556"}),
+          phone: "+16049995556"
+        }),
         knex('orders').insert({
           id: 20003,
           name: 'Taylour Em',
           phone: "+16049995557",
-          status: "Confirmed",
-          eta: 25})
+          status: "confirmed"
+        })
       ]);
     });
 };
