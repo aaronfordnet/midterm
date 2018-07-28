@@ -11,7 +11,7 @@ $(() => {
       let $item = $('<div>').addClass('col-sm-12 col-xs-5 food-item').attr('id', `${food.id}`).html(`
             <div class="row food-item-row">
               <div class="col-sm-3 col-xs-12 food-item-img">
-                <img src=${food.imgurl} height = '150px' width = '150px' />
+                <img src=${food.imgurl} />
               </div>
               <div class="col-sm-7 col-xs-12 food-item-description">
                 <h3>${food.name}</h3>

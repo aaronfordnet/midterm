@@ -13,6 +13,16 @@ h1.logo {
   font-size: 4em;
 }
 
+a.logo {
+  color: #222;
+  text-decoration: none;
+}
+
+a.logo:hover {
+  color: #222;
+  text-decoration: none;
+}
+
 
 /* ===================
       Menu Page
@@ -78,6 +88,14 @@ input.quantity {
 div.total-container{
   font-size: 2em;
   float:right;
+}
+
+#menu-food > h3 {
+  margin-left: 12px;
+}
+
+#menu-drink > h3 {
+  margin-left: 12px;
 }
 
 /* ===================
