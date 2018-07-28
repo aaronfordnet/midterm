@@ -15,8 +15,7 @@ exports.seed = function(knex, Promise) {
         knex('orders').insert({
           id: 20003,
           name: 'Taylour Em',
-          phone: "+16049995557",
-          status: "confirmed"
+          phone: "+16049995557"
         })
       ]);
     });
