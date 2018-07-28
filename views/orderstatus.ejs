@@ -61,14 +61,14 @@
             <h3>Thank you for placing an order!</h3>
             <h4>Your order number is #<%= order.id %></h4>
             <% if (order.status === "Placed"){ %>
-            <p class="ordermsg">Hi
-              <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
+            <p class="ordermsg">Hi <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
               <% } else if (order.status === "Confirmed") {%>
-              <p class="ordermsg">Hi
-              <%= order.name %>, your order will be ready for pickup <%= moment(order.eta).fromNow() %> approximately! We will text you once it is!</p>
+              <p class="ordermsg">Hi <%= order.name %>, your order will be ready for pickup <%= moment(order.eta).fromNow() %> approximately! We will text you once it is!</p>
+              <% } else if (order.status === "Ready") { %>
+              <p class="ordermsg">Hi <%= order.name %>, your order is READY for pickup! YAY! See you soon!</p>
               <% } else { %>
-              <p class="ordermsg">Hi
-              <%= order.name %>, your order is READY for pickup! YAY! See you soon!</p>
+              <p class="ordermsg">Hi <%= order.name %>, this order has already been picked up!</p>
+              <p>Would you like to <a href="/">place a new one?</a></p>
               <% } %>
             <h3>Status: <%= order.status %></h3>
             <br>
