@@ -51,6 +51,22 @@ div.food-item-row {
   flex-wrap: wrap;
 }
 
+.item2{
+  font-size: 20px;
+}
+
+#total{
+  position: absolute;
+  border: solid;
+  padding: 5px;
+  border-radius: 10px;
+  border-width:thin;
+  border-color: black;
+  top: 150px;
+  left: 38%;
+  margin-left:600px;
+}
+
 div.food-item-img {
   background: #ddd;
   padding: 0;

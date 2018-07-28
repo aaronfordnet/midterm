@@ -36,9 +36,10 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
+app.locals.moment = require('moment');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -131,16 +132,16 @@ app.post('/', (req, res) => {
 
               // Twilio message to restaurant
 
-              // console.log('sending text message to restaurant');
-              // client.messages.create({
-              //     from: '+16049016036',
-              //     to: adminPhone,
-              //     body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
-              //   })
-              //   .then(message => {
-              //     console.log('Success! Text sent to restaurant');
-              //     console.log(`ID: ${message.sid}`)
-              //   }).done();
+              console.log('sending text message to restaurant');
+              client.messages.create({
+                  from: '+16049016036',
+                  to: adminPhone,
+                  body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
+                })
+                .then(message => {
+                  console.log('Success! Text sent to restaurant');
+                  console.log(`ID: ${message.sid}`)
+                }).done();
             });
         });
 

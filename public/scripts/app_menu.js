@@ -61,15 +61,15 @@ $(() => {
   getTotal();
 
 
-    $('div.container').on('change', 'input.quantity', function(event) {
-      let qty = $(this).val();
-      let price = $('.food-item-price', $(this).parent()).text();
-      let value = Number(price.replace("$","")).toFixed(2);
-      let subtotal = (value * qty).toFixed(2);
-      var sum = $('.sum', $(this).parent())
-      sum.text(subtotal);
-      getTotal();
-    })
+  $('div.container').on('change', 'input.quantity', function(event) {
+    let qty = $(this).val();
+    let price = $('.food-item-price', $(this).parent()).text();
+    let value = Number(price.replace("$", "")).toFixed(2);
+    let subtotal = (value * qty).toFixed(2);
+    var sum = $('.sum', $(this).parent())
+    sum.text(subtotal);
+    getTotal();
+  })
 
 
 
@@ -102,5 +102,20 @@ $(() => {
     var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
   });
+
+  let name = "#total";
+  let menuYloc = null;
+  menuYloc = parseInt($(name).css("top").substring(0, $(name).css("top").indexOf("px")));
+
+  $(window).scroll(function() {
+    var offset = menuYloc + $(document).scrollTop() + "px";
+    $(name).animate({ top: offset }, { queue: false });
+  });
+
+
+
+
+
+
 
 });

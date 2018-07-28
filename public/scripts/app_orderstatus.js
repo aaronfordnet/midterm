@@ -2,7 +2,6 @@
 // "use strict";
 
 $(() => {
-
   function getTotal() {
     var total = 0;
     $('.sum').each(function() {
