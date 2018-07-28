@@ -61,16 +61,16 @@ module.exports = (knex) => {
 
     // Twilio message to user
 
-    console.log('sending text message');
-    client.messages.create({
-      from: '+16049016036',
-      to: customerPhone,
-      body: `Hello ${name}! Your order should be ready for pick up in ${minutes} minutes! View your order status at http://localhost:8080/orders/${id} to know when to pick it up!`
-       })
-      .then(message => {
-        console.log('Reply from Twilio');
-        console.log(`ID: ${message.sid}`)
-      }).done(console.log('Text sent to client'));
+    console.log('Sending confirmation text to customer...');
+    // client.messages.create({
+    //   from: '+16049016036',
+    //   to: adminPhone,
+    //   body: 'Hi ' + name + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://localhost:8080/orders/' + id + ' to track your order.'
+    //    })
+    //   .then(message => {
+    //     console.log('Success! Confirmation text sent to customer');
+    //     console.log(`ID: ${message.sid}`)
+    //   }).done();
 
   });
 
