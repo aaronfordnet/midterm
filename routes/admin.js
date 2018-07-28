@@ -38,31 +38,34 @@ module.exports = (knex) => {
     let minutes = req.body.minutes;
     let status = req.body.status;
     let name = req.body.name;
-    if(status === "Placed"){
-      status = "Confirmed";}
+    if (status === "Placed") {
+      status = "Confirmed";
+    }
 
-    knex("orders")
-    .where({
-      id: id})
-    .update({
-      status: status,
-      eta: minutes
-    }).then();
     // Updates order info/page and sends SMS to customer
-    console.log(req.body.minutes, req.body.id, status, name);
+    knex("orders")
+      .where({
+        id: id
+      })
+      .update({
+        status: status,
+        eta: minutes
+      }).then((id) => {
+        res.json({ result: 'true' });
+      });
 
-  //    // Twilio message to user
+    // Twilio message to user
 
-  // console.log('sending text message');
-  // client.messages.create({
-  //   from: '+16049016036',
-  //   to: customerPhone,
-  //   body: `Hello ${name}! Your order should be ready for pick up in ${minutes} minutes! View your order status at http://localhost:8080/orders/${id} to know when to pick it up!`
-  //    })
-  //   .then(message => {
-  //     console.log('Reply from Twilio');
-  //     console.log(`ID: ${message.sid}`)
-  //   }).done(console.log('Text sent to client'));
+    // console.log('sending text message');
+    // client.messages.create({
+    //   from: '+16049016036',
+    //   to: customerPhone,
+    //   body: `Hello ${name}! Your order should be ready for pick up in ${minutes} minutes! View your order status at http://localhost:8080/orders/${id} to know when to pick it up!`
+    //    })
+    //   .then(message => {
+    //     console.log('Reply from Twilio');
+    //     console.log(`ID: ${message.sid}`)
+    //   }).done(console.log('Text sent to client'));
 
   });
 

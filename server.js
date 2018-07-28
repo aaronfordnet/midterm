@@ -82,8 +82,6 @@ app.post('/', (req, res) => {
     }
   }
 
-  console.log(itemsArray);
-  console.log(quantityArray);
 
   knex('orders')
     .returning('id')
