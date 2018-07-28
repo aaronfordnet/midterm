@@ -25,42 +25,67 @@
           <% for (let order of newArray) { %>
             <% if (order.status === "Placed") { %>
               <h4 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h4>
-            <% } else if (order.status === "Confirmed") { %>
-              <h4 class="status">Placed→ <span class="current">Confirmed</span> → Ready for Pickup</h4>
-            <% } else if (order.status === "Ready"){ %>
-              <h4 class="status">Placed→ Confirmed → <span class="current">Ready for Pickup</span></h4>
-            <% } %>
-          <% } %>
+              <% } else if (order.status === "Confirmed") { %>
+                <h4 class="status">Placed→ <span class="current">Confirmed</span> → Ready for Pickup</h4>
+                <% } else if (order.status === "Ready"){ %>
+                  <h4 class="status">Placed→ Confirmed → <span class="current">Ready for Pickup</span></h4>
+                  <% } %>
+                    <% } %>
         </div>
 
         <div class="col-sm-12 col-xs-12 order-item">
 
           <% for (let order of newArray) { %>
-              <% if (order.imgurl) { %>
-            <div class="col-sm-12 col-xs-12 order-item-single">
-              <img src="<%= order.imgurl%>" height="120px" width="120px">
-              <p>Item - <%= order.name %></p>
-              <p>Quantity - <%= order.count %></p>
-              <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
-            </div>
-            <% } else { %>
-              <div class="col-sm-12 col-xs-12 order-item">
-                <h3>Thank you for placing an order!</h3>
-                <h4>Your order number is #<%= order.id %></h4>
-                <p class="ordermsg">Hi <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
-                <h4>Status: <%= order.status %></h4>
-                <h4>Here's your order:</h4>
+            <% if (order.imgurl) { %>
+
+              <div class="row order-item-row">
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <p><%= order.name %></p>
+                </div>
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <p><%= order.count %></p>
+                </div>
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
+
               </div>
-              <% }
+        </div>
+
+        <% } else { %>
+
+          <div class="col-sm-12 col-xs-12 order-item">
+            <h3>Thank you for placing an order!</h3>
+            <h4>Your order number is #<%= order.id %></h4>
+            <p class="ordermsg">Hi
+              <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
+            <h3>Status: <%= order.status %></h3>
+            <br>
+            <h4>Here's your order:</h4>
+          </div>
+          <div class="col-sm-12 col-xs-12 order-item border">
+              <div class="row order-item-row">
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <p class="table-heading">Item:</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <p class="table-heading">Quantity:</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 order-item-single">
+                  <p class="table-heading">Price:</p>
+                </div>
+              </div>
+            <% }
             } %>
-            <div class="total-container">
+          </div>
+          <div class="total-container">
             <span class="total">Total $</span>
             <span id="order-total"></span>
           </div>
-        </div>
       </div>
     </div>
-    <!-- END Insert Area -->
+  </div>
+  <!-- END Insert Area -->
   </div>
 </body>
+
 </html>

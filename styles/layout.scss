@@ -76,7 +76,7 @@ input.quantity {
 
 
 div.total-container{
-  font-size: 2.5em;
+  font-size: 2em;
   float:right;
 }
 
@@ -175,4 +175,16 @@ div.order-item-status {
 .order-item-single {
   display: flex;
   justify-content: space-around;
+}
+
+.order-item-single > img {
+ max-height: 50px;
+}
+
+p.table-heading {
+  font-weight: 600;
+}
+
+.border {
+  border: 1px solid #333;
 }
