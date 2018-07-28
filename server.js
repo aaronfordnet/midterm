@@ -130,16 +130,17 @@ app.post('/', (req, res) => {
               });
 
               // Twilio message to restaurant
-              console.log('sending text message to restaurant');
-              client.messages.create({
-                  from: '+16049016036',
-                  to: adminPhone,
-                  body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
-                })
-                .then(message => {
-                  console.log('Success! Text sent to restaurant');
-                  console.log(`ID: ${message.sid}`)
-                }).done();
+
+              // console.log('sending text message to restaurant');
+              // client.messages.create({
+              //     from: '+16049016036',
+              //     to: adminPhone,
+              //     body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
+              //   })
+              //   .then(message => {
+              //     console.log('Success! Text sent to restaurant');
+              //     console.log(`ID: ${message.sid}`)
+              //   }).done();
             });
         });
 
@@ -148,7 +149,7 @@ app.post('/', (req, res) => {
     });
 });
 
-// ###### Twilio Inbound ######
+// Receive SMS confirmation from restaurant
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
 
@@ -175,7 +176,7 @@ app.post('/sms', (req, res) => {
     //twiml.toString()
   );
 });
-// ############################
+
 
 
 app.listen(PORT, () => {
