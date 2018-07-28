@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const adminPhone = process.env.TWILIO_ADMIN_PHONE;
+const customerPhone = process.env.TWILIO_CUSTOMER_PHONE;
 const client = require('twilio')(accountSid, authToken);
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -100,7 +102,7 @@ app.post('/', (req, res) => {
   // console.log('sending text message');
   // client.messages.create({
   //   from: '+16049016036',
-  //   to: '+17789261236',
+  //   to: adminPhone,
   //   body: `Hello! Mr. ${orderName} has placed an order of ${quantityArray.reduce(function(acc, val) { return Number(acc) + Number(val); }, 0)} items! Please visit xxxx to confirm order.🌮🌮🌮🌮`
   //    })
   //   .then(message => {

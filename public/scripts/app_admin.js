@@ -3,7 +3,6 @@
 $(function() {
 
   function createOrder(order, orderItems) {
-    console.log(order, orderItems);
     const $order = $("<article>").addClass("order");
     // const $div;
 
@@ -27,18 +26,15 @@ $(function() {
       const orderItems = orderData.items.filter(function(item) {
         return order.id === item.id;
       });
-      console.log("order items", orderItems);
       filtered.push(createOrder(order, orderItems));
     });
     return filtered;
   }
 
   function appendOrders(orderData) {
-    $('#admin-list').empty();
+    // $('#admin-list').empty();
     let filtered = filterOrders(orderData);
-    console.log("filtered", filtered);
     filtered.forEach(order => {
-      console.log(order);
       $('#admin-list').append(order);
     });
   }
@@ -58,32 +54,30 @@ $(function() {
 
   $("#confirm").submit(function(event) {
     event.preventDefault();
-    console.log("A submit happened.");
-    // console.log(req.body);
-  //   var input = event.target.elements.text.value;
-
-  // console.log(this);
-
-  console.log(this);
-
-    // $.getJSON();
+    let id = $(this).children('input').attr('id');
+    let minutes = $(this).serialize().replace("eta=","");
+    let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');
+    let status = $(this).parent().prev().prev().children('h5').children('span').text();
+    console.log(status);
+    let data = {
+      id: id,
+      minutes: minutes,
+      status: status,
+      name: name
+    };
+    console.log("Time submited.");
 
     $.ajax({
       method: "POST",
       url: "/api/admin",
-      data: $(this).serialize()
+      data: data,
+      success: function(minutes){
+      }
     })
-    .done(function(orders) {
-        console.log(this);
-    //   $.ajax({
-    //   method: "GET",
-    //   url: "/",
-    //   data: $(this).serialize()
-    // });
-      // loadTweets();
-      // console.log($(".tweet").find("p"));
-      console.log(orders);
-      console.log("ajax post");
+    // $(this).children('button').text('SMS Sent!');
+    // $(this).children('input').hide();
+    // $(this).children('p').hide();
+    loadOrders();
       return true;
 
     });
@@ -101,4 +95,3 @@ $(function() {
   //   });
   });
 
-});
