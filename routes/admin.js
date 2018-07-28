@@ -32,10 +32,11 @@ module.exports = (knex) => {
       });
   });
 
-  router.put("/", (req, res) => {
+  router.put("/confirm", (req, res) => {
     let id = req.body.id;
     let minutes = req.body.minutes;
     let status = req.body.status;
+    console.log(req.body.status);
     let name = req.body.name;
     if (status === "Placed") {
       status = "Confirmed";
@@ -69,6 +70,31 @@ module.exports = (knex) => {
     //   }).done(console.log('Text sent to client'));
 
   });
+
+    router.put("/ready", (req, res) => {
+      let id = req.body.id;
+      // let minutes = req.body.minutes;
+      let status = req.body.status;
+      // let name = req.body.name;
+      if (status === "Confirmed") {
+        status = "Ready";
+      }
+
+      // Updates order info/page and sends SMS to customer
+      knex("orders")
+        .where({
+          id: id
+        })
+        .update({
+          status: status,
+          // eta: minutes
+        }).then((id) => {
+          res.json({ result: 'true' });
+        }).error(err => {
+          console.error(err);
+        });
+      });
+
 
   return router;
 };
