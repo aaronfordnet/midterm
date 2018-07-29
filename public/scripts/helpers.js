@@ -48,7 +48,7 @@ function createOrder(order, orderItems) {
   const $confirm = $("<div>").addClass("col-sm-3 col-xs-12 admin-item-confirm").appendTo($order);
   if (order.status === "Placed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "Confirmed" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "Confirmed"}).appendTo($confirm);
     $("<p>").text("Preparation time:").appendTo($form);
     $("<input>").attr({ type: "number", min: 0, max: 99, name: "eta" }).appendTo($form);
     $("<p>").text("Minutes").appendTo($form);
@@ -56,13 +56,13 @@ function createOrder(order, orderItems) {
 
   } else if (order.status === "Confirmed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "Ready" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "Ready" }).appendTo($confirm);
     $("<p>").text(`ETA: ${moment(order.eta).fromNow()}`).appendTo($form);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
 
   } else if (order.status === "Ready") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "picked-up" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "picked-up" }).appendTo($confirm);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
   }
@@ -80,6 +80,7 @@ function filterOrders(orderData) {
     if (order.status !== "Picked Up") {
       filtered.push(createOrder(order, orderItems));
     }
+    // console.log("status", order.status);
   });
   return filtered;
 }
@@ -99,6 +100,7 @@ function loadOrders() {
     method: "GET",
     url: "/api/admin",
     success: function(orderData) {
+      console.log(orderData.users);
       appendOrders(orderData);
     },
     error: function(err) {

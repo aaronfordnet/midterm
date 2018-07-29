@@ -4,7 +4,7 @@
 // All functions called in this file are defined in helpers.js
 $(function() {
 
-  popup();
+  // popup();
 
   $("#loginbtn").click(function() {
     var name = $("#username").val();
@@ -25,12 +25,12 @@ $(function() {
   // }, 30000);
   // window.location.reload(true);
 
-  $("#admin-list").on("submit", "#Confirmed", function(event) {
+  $("#admin-list").on("submit", "form.Confirmed", function(event) {
     event.preventDefault();
     let id = $(this).children('button').attr('id');
     let minutes = $(this).serialize().replace("eta=", "");
     let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');
-    let status = $(this).attr("id");
+    let status = $(this).attr("class");
     let data = {
       id: id,
       minutes: minutes,
@@ -51,11 +51,11 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#Ready", function(event) {
+  $("#admin-list").on("submit", "form.Ready", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
-      status: $(this).attr("id")
+      status: $(this).attr("class")
     };
 
     $.ajax({
@@ -71,44 +71,43 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
+  $("#admin-list").on("submit", "form.picked-up", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
       status: "Picked Up",
     };
+    console.log(data.status);
 
     $.ajax({
       method: "PUT",
       url: "/api/admin/pickup",
       data: data,
       success: function(result) {
+
+      console.log("happening", result);
+
+        // $.ajax({
+        //   method: "GET",
+        //   url: "/api/admin",
+        //   success: function(result, other) {
+        //     // console.log(users);
+        //     console.log("RESULT", result);
+        //     loadOrders();
+        //   },
+        //   error: function(err) {
+        //     console.error(err);
+        //   }
+        // });
+
         loadOrders();
       },
       error: function(err) {
+        console.log("error is happening");
         console.error(err);
       }
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
-    event.preventDefault();
-    // let data = {
-    //   id: $(this).children('button').attr('id'),
-    //   status: $(this).attr("id"),
-    // };
-
-    $.ajax({
-      method: "GET",
-      url: "/api/admin",
-      // data: data,
-      success: function(result) {
-        loadOrders();
-      },
-      error: function(err) {
-        console.error(err);
-      }
-    });
-  });
 
 });
