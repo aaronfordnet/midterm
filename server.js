@@ -207,7 +207,7 @@ app.post('/sms', (req, res) => {
 
 // TWILIO contact us outgoing call
 app.get("/contact", (req, res) => {
-  console.log('Contacting Benditos...');
+  console.log("Contacting Bendito's...");
   // client.calls
   //     .create({
   //        url: 'http://aaronford.net/contact.xml',

@@ -38,10 +38,7 @@ $(() => {
         let isFav = 0;
         for (let i = 0; i < numFavs; i++) {
           let currentDiv = $('div.col-sm-12.col-xs-5.favourite-item').eq(i)
-          console.log(currentDiv.attr('id'));
-          console.log(food.id);
           if (food.id == currentDiv.attr('id')) {
-            console.log(isFav);
             isFav = 1;
           }
         }

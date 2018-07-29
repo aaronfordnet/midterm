@@ -18,7 +18,6 @@ $(() => {
     method: "GET",
     url: "/orders",
     success: function(res, res) {
-      console.log("worked");
       let status = $("span.current").text();
       if (status !== "Picked Up") {
         window.location.reload(true);

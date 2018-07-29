@@ -70,7 +70,6 @@ module.exports = (knex) => {
        })
       .then(message => {
         console.log('Success! Confirmation text sent to customer');
-        console.log(`ID: ${message.sid}`)
       }).done();
 
   });
@@ -96,10 +95,8 @@ module.exports = (knex) => {
 
   // Updates order info/page to "Picked Up" status
   router.put("/pickup", (req, res) => {
-    console.log("why not me?");
     let id = req.body.id;
     let status = req.body.status;
-    // console.log("status", req.body.status);
     if (status === "Ready") {
       status = "Picked Up";
     }
