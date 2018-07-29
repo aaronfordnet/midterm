@@ -48,7 +48,7 @@ h6 {
 .container.menu {
   max-width: 800px;
   min-width: 400px;
-  background: #eee;
+  background-color: #fcfcfc;
   padding: 20px 40px 40px;
   margin: 10px auto 50px;
   border-radius: 2em;
@@ -91,14 +91,13 @@ div.favourite-item-row {
 
 #total {
   position: absolute;
-  border: solid;
-  padding: 5px;
+  background-color: #fcfcfc;
+  padding: .75em;
   border-radius: 10px;
-  border-width: thin;
   border-color: black;
   top: 150px;
   left: 38%;
-  margin-left: 600px;
+  // margin-left: 600px;
   text-align: center;
 }
 
@@ -350,31 +349,22 @@ p.table-heading {
 }
 
 
-/*THIS IS A TEST*/
+/* Admin Login Box*/
 
 #logindiv {
-  // opacity: 0.8;
-  // align-content: center;
-  // top: 0px;
-  // left: 0px;
-  // height: 120%;
   padding: 2.5em;
-  // width: 110%;
   margin-top: 6em;
-  // background: white;
   display: none;
 }
 
 #logindiv h3.login {
   font-size: 18px;
   text-align: center;
-  // text-shadow: 1px 0px 3px gray;
 }
 
 #logindiv .form {
   border-radius: 2em;
   padding: 20px 30px;
-  // box-shadow: 0 0 15px;
   font-size: 14px;
   font-weight: bold;
   max-width: 350px;
@@ -395,7 +385,6 @@ p.table-heading {
 #logindiv button {
   margin: 0 auto 0;
   max-width: 100px;
-  // text-align: center;
 }
 
 #login {
