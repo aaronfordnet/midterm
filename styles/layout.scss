@@ -79,7 +79,8 @@ div.favourite-item-row {
 }
 
 .item2 {
-  font-size: 20px;
+  font-size: .8em;
+  font-weight: bold;
 }
 
 #total {
@@ -168,6 +169,7 @@ input.quantity {
 }
 
 div.total-container {
+  font-weight: bold;
   font-size: 1.8em;
   float: right;
   margin-right: 15px;
@@ -206,7 +208,8 @@ div.total-container {
   margin: 1.5em auto 1.5em;
 }
 
-.container.admin.header {
+.container.header {
+  background-color: #fcfcfc;
   border-radius: 5em;
   padding: .25em;
   max-width: 700px;
@@ -245,7 +248,7 @@ div.admin-item-status {
 }
 
 span.current {
-  color: #2e6ca3;
+  color: #337ab7;
 }
 
 div.admin-item-foods {
@@ -377,5 +380,5 @@ div.order-item-border {
   background-color: white;
   opacity: 1;
   position: relative;
-  border: .25em solid #2e6ca3;
+  border: .25em solid #337ab7;
 }

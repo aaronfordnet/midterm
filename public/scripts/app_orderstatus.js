@@ -1,24 +1,23 @@
 // jshint esversion: 6
 // "use strict";
 
-$(() => {
+$(function() {
   function getTotal() {
     var total = 0;
-    $('.sum').each(function() {
+    $(".sum").each(function() {
       let amount = Number(this.innerHTML.replace("$",""));
       total += amount;
     });
-    $('#order-total').text(total.toFixed(2));
+    $("span.order-total").text(total.toFixed(2));
   }
 
   getTotal();
 
-  setInterval(() => {
+  setInterval(function() {
     $.ajax({
     method: "GET",
     url: "/orders",
-    success: function(res, res) {
-      console.log("worked");
+    success: function(req, res) {
       let status = $("span.current").text();
       if (status !== "Picked Up") {
         window.location.reload(true);

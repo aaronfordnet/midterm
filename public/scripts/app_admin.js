@@ -21,7 +21,7 @@ $(function() {
   });
 
   loadOrders();
-  setInterval(() => {
+  setInterval(function() {
     loadOrders();
   }, 20000);
 
@@ -38,17 +38,20 @@ $(function() {
       name: name
     };
 
-    $.ajax({
-      method: "PUT",
-      url: "/api/admin/confirm",
-      data: data,
-      success: function(result) {
-        loadOrders();
-      },
-      error: function(err) {
-        console.error(err);
-      }
-    });
+    if (minutes) {
+      $.ajax({
+        method: "PUT",
+        url: "/api/admin/confirm",
+        data: data,
+        success: function(result) {
+          loadOrders();
+        },
+        error: function(err) {
+          console.error(err);
+        }
+      });
+    }
+
   });
 
   $("#admin-list").on("submit", "form.Ready", function(event) {
