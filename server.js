@@ -185,7 +185,7 @@ app.post('/sms', (req, res) => {
       client.messages.create({
           from: '+16049016036',
           to: adminPhone,
-          body: 'Hi ' + orderName + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://localhost:8080/orders/' + id + ' to track your order.'
+          body: 'Hi ' + orderName + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://bendito.herokuapp.com/orders/' + id + ' to track your order.'
         })
         .then(message => {
           console.log('Success! Confirmation text sent to customer');
