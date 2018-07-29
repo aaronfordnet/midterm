@@ -27,23 +27,7 @@ $(function() {
           }
         }
         if (isFav === 0) {
-          let $item = $('<div>').addClass('col-sm-12 col-xs-5 food-item').attr('id', `${food.id}`).html(`
-            <div class="row food-item-row">
-              <div class="col-sm-3 col-xs-12 food-item-img">
-                <img src=${food.imgurl} />
-              </div>
-              <div class="col-sm-7 col-xs-12 food-item-description">
-                <h3>${food.name}</h3>
-                <p>${food.description}</p>
-              </div>
-              <div class="col-sm-2 col-xs-12 food-item-qty">
-                <p class="food-item-price">$${food.price / 100}</p>
-                <p>Quantity:</p>
-                <input class="quantity" type="number" min="0" max="99" name="item_${food.id}" value="0">
-                <span class="subtotal">Subtotal: </span><br>$<span class="sum">0</span>
-              </div>
-            </div>
-        `);
+          let $item = $('<div>').addClass('col-sm-12 col-xs-5 food-item').attr('id', food.id).html('<div class="row food-item-row"><div class="col-sm-3 col-xs-12 food-item-img"><img src=' + food.imgurl + ' /></div><div class="col-sm-7 col-xs-12 food-item-description"><h3>' + food.name + '</h3><p>' + food.description + '</p></div><div class="col-sm-2 col-xs-12 food-item-qty"><p class="food-item-price">$' + (food.price / 100) + '</p><p>Quantity:</p><input class="quantity" type="number" min="0" max="99" name="item_' + food.id + '" value="0"><span class="subtotal">Subtotal: </span><br>$<span class="sum">0</span></div></div>');
           if (food.category === "food") {
             $('#menu-food').append($item);
           } else {
