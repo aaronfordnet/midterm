@@ -1,4 +1,5 @@
 body {
+  background-image: url('/images/bigtacos.jpg');
   background-color: #EEE;
 
   h1 {
@@ -6,7 +7,7 @@ body {
   }
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -25,6 +26,7 @@ a.logo:hover {
   color: #222;
   text-decoration: none;
 }
+
 
 
 /* ===================
@@ -55,20 +57,20 @@ div.food-item-row {
   flex-wrap: wrap;
 }
 
-.item2{
+.item2 {
   font-size: 20px;
 }
 
-#total{
+#total {
   position: absolute;
   border: solid;
   padding: 5px;
   border-radius: 10px;
-  border-width:thin;
+  border-width: thin;
   border-color: black;
   top: 150px;
   left: 38%;
-  margin-left:600px;
+  margin-left: 600px;
   text-align: center;
 }
 
@@ -81,7 +83,7 @@ ul {
 
 a.anchor {
   text-decoration: none;
-  color:black;
+  color: black;
   display: block;
   padding: 1rem;
   cursor: pointer;
@@ -112,7 +114,7 @@ p.error-message {
 
 p.food-item-price {
   font-weight: 800;
-  margin:0;
+  margin: 0;
 }
 
 input.quantity {
@@ -120,24 +122,27 @@ input.quantity {
 }
 
 
-div.total-container{
+div.total-container {
   font-size: 2em;
-  float:right;
+  float: right;
 }
 
-#menu-food > h3 {
+#menu-food>h3 {
   margin-left: 12px;
 }
 
-#menu-drink > h3 {
+#menu-drink>h3 {
   margin-left: 12px;
 }
+
 
 /* ===================
       Admin Page
 =================== */
 
 .container.admin {
+  border-radius: 1em;
+  border: .25em #222 solid;
   max-width: 800px;
   background: #eee;
   padding: 20px 40px 40px;
@@ -152,6 +157,7 @@ div.admin-item-row {
 }
 
 div.admin-item-head {
+  border-radius: .5em .5em 0 0;
   background-color: #aaa;
   padding: 10px;
   display: flex;
@@ -168,7 +174,7 @@ div.admin-item-status {
   background-color: #aaa;
 }
 
-.admin-item-status > .status {
+.admin-item-status>.status {
   color: #7b7b7b;
   text-align: center;
 }
@@ -179,11 +185,13 @@ span.current {
 }
 
 div.admin-item-foods {
+  border-radius: 0 0 0 .5em;
   background-color: #ccc;
   padding: 20px 10px 10px;
 }
 
 div.admin-item-confirm {
+  border-radius: 0 0 .5em 0;
   background-color: #ccc;
   text-align: center;
   padding: 10px 10px 20px 10px;
@@ -196,6 +204,13 @@ input.eta-time {
   padding-left: 5px;
   margin-bottom: 5px;
 }
+
+ul {
+  list-style: disc;
+  text-align: left;
+  padding-left: 2em;
+}
+
 
 
 /* ===================
@@ -217,7 +232,7 @@ div.order-item-status {
   background-color: #aaa;
 }
 
-.order-item-status > .status {
+.order-item-status>.status {
   color: #7b7b7b;
   text-align: center;
 }
@@ -232,8 +247,8 @@ div.order-item-status {
   justify-content: space-around;
 }
 
-.order-item-single > img {
- max-height: 50px;
+.order-item-single>img {
+  max-height: 50px;
 }
 
 p.table-heading {
@@ -244,61 +259,58 @@ p.table-heading {
   border: 1px solid #333;
 }
 
+
 /*THIS IS A TEST*/
 
-#logindiv{
-opacity:0.92;
-align-content: center;
-top: 0px;
-left: 0px;
-height: 100%;
-width: 100%;
-background: white;
-display: none;
+#logindiv {
+  opacity: 0.92;
+  align-content: center;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: white;
+  display: none;
 }
 
-#logindiv h3.login{
-font-size:18px;
-text-align:center;
-text-shadow:1px 0px 3px gray;
+#logindiv h3.login {
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 1px 0px 3px gray;
 }
 
-#logindiv .form{
-border-radius:2px;
-padding:20px 30px;
-box-shadow:0 0 15px;
-font-size:14px;
-font-weight:bold;
-width:350px;
-margin:30px auto;
+#logindiv .form {
+  border-radius: 2px;
+  padding: 20px 30px;
+  box-shadow: 0 0 15px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 350px;
+  margin: 30px auto;
 }
 
-#logindiv input{
-width:100%;
-height:35px;
-margin-top:5px;
-border:1px solid #999;
-border-radius:3px;
-padding:5px;
-}
-#logindiv input[type=button]{
-background-color:#123456;
-border:1px solid white;
-font-weight:bold;
-font-size:18px;
-color:white;
-width:49%;
+#logindiv input {
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px;
 }
 
-#login{
-width:350px;
-margin:0px;
-background-color:white;
-position: relative;
-border: 5px solid rgb(90, 158, 181);
+#logindiv input[type=button] {
+  background-color: #123456;
+  border: 1px solid white;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  width: 49%;
 }
 
-
-
-
-
+#login {
+  width: 350px;
+  margin: 0px;
+  background-color: white;
+  position: relative;
+  border: 5px solid rgb(90, 158, 181);
+}

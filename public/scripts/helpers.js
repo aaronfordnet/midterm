@@ -1,6 +1,13 @@
 // jshint esversion: 6
 "use strict";
 
+// Login for access to admin page
+function popup() {
+    $("#logindiv").css("display", "block");
+    $("h1").hide();
+    $('.container').css("display", "none");
+  }
+
 // Returns an object of unique items and quantities in an order
 function countItems(items) {
   const counted = {};
@@ -17,7 +24,7 @@ function createOrder(order, orderItems) {
 
   const $head = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-head").appendTo($order);
 
-  $("<h4>").attr({ customer: order.name }).text(`Order ${order.id} | ${order.name} | ${order.phone}`).appendTo($head);
+  $("<h4>").attr({ customer: order.name }).text(`Order #${order.id} | ${order.name} | ${order.phone}`).appendTo($head);
   $("<p>").text(`Placed at: ${moment(order.placed_at).format("DD-MM-YYYY hh:mm a")}`).appendTo($head);
 
   const $status = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-status").appendTo($order);
@@ -41,7 +48,7 @@ function createOrder(order, orderItems) {
   const $confirm = $("<div>").addClass("col-sm-3 col-xs-12 admin-item-confirm").appendTo($order);
   if (order.status === "Placed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "Confirmed" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "Confirmed"}).appendTo($confirm);
     $("<p>").text("Preparation time:").appendTo($form);
     $("<input>").attr({ type: "number", min: 0, max: 99, name: "eta" }).appendTo($form);
     $("<p>").text("Minutes").appendTo($form);
@@ -49,13 +56,13 @@ function createOrder(order, orderItems) {
 
   } else if (order.status === "Confirmed") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "Ready" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "Ready" }).appendTo($confirm);
     $("<p>").text(`ETA: ${moment(order.eta).fromNow()}`).appendTo($form);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
 
   } else if (order.status === "Ready") {
 
-    const $form = $("<form>").addClass("admin").attr({ id: "picked-up" }).appendTo($confirm);
+    const $form = $("<form>").addClass("admin").attr({ class: "picked-up" }).appendTo($confirm);
     $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
   }

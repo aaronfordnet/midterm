@@ -4,20 +4,13 @@
 // All functions called in this file are defined in helpers.js
 $(function() {
 
-  popup();
-
-  function popup() {
-    $("#logindiv").css("display", "block");
-    $("h1").hide();
-    $('.container').css("display", "none");
-  }
-
+  // popup();
 
   $("#loginbtn").click(function() {
     var name = $("#username").val();
     var password = $("#password").val();
     if (username == "" || password == "") {
-      alert("Username or Password was Wrong");
+      alert("Username or password is incorrect.");
     } else {
         $("#logindiv").css("display", "none");
         $(this).parent().parent().hide();
@@ -27,13 +20,17 @@ $(function() {
   });
 
   loadOrders();
+  // setInterval(() => {
+    // window.location.reload(true);
+  // }, 30000);
+  // window.location.reload(true);
 
-  $("#admin-list").on("submit", "#Confirmed", function(event) {
+  $("#admin-list").on("submit", "form.Confirmed", function(event) {
     event.preventDefault();
     let id = $(this).children('button').attr('id');
     let minutes = $(this).serialize().replace("eta=", "");
     let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');
-    let status = $(this).attr("id");
+    let status = $(this).attr("class");
     let data = {
       id: id,
       minutes: minutes,
@@ -54,11 +51,11 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#Ready", function(event) {
+  $("#admin-list").on("submit", "form.Ready", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
-      status: $(this).attr("id")
+      status: $(this).attr("class")
     };
 
     $.ajax({
@@ -74,7 +71,7 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
+  $("#admin-list").on("submit", "form.picked-up", function(event) {
     event.preventDefault();
     let data = {
       id: $(this).children('button').attr('id'),
@@ -94,24 +91,5 @@ $(function() {
     });
   });
 
-  $("#admin-list").on("submit", "#picked-up", function(event) {
-    event.preventDefault();
-    // let data = {
-    //   id: $(this).children('button').attr('id'),
-    //   status: $(this).attr("id"),
-    // };
-
-    $.ajax({
-      method: "GET",
-      url: "/api/admin",
-      // data: data,
-      success: function(result) {
-        loadOrders();
-      },
-      error: function(err) {
-        console.error(err);
-      }
-    });
-  });
 
 });

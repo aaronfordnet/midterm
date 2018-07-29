@@ -16,32 +16,39 @@
 </head>
 
 <body>
+  <img id="background" src="/images/bigtacos.jpg">
+  <div class="container admin header">
+    <h1 class="text-center logo">
+      <img id="logoimg" src="/images/burrito.png">
+      <a class="logo" href="/">
+      Bendito's Taqueria
+    </a>
+  </h1>
+  </div>
+
   <section id="logindiv">
     <form class="form" action="#" id="login">
       <h3 class="login">Login Form</h3>
       <hr/>
-      <br/>
-      <label>Username : </label>
-      <br/>
-      <input type="text" id="username" placeholder="Ex -john123" />
-      <br/>
-      <br/>
-      <label>password : </label>
-      <br/>
-      <input type="text" id="password" placeholder="************" />
-      <br/>
-      <br/>
-      <input type="button" id="loginbtn" value="Login" />
-      <br/>
+      <p>
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="Ex - Jeremy" autocomplete="off" />
+      </p>
+      <p>
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="************" autocomplete="off" />
+      </p>
+
+      <input type="submit" id="loginbtn" value="Login" style="width: 100px;" />
     </form>
   </section>
-  <h1 class="text-center logo"><a class="logo" href="/">Bendito's Taqueria</a></h1>
   <div class="container admin">
     <h2 class="text-center">Manage Orders</h2>
     <div id="admin-list" class="row">
       <!-- START Insert Area -->
       <!-- END Insert Area -->
     </div>
+    <span>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
   </div>
 </body>
 
