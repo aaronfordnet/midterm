@@ -295,10 +295,14 @@ div.order-item {
   background-color: #ccc;
   padding: 10px;
   text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 div.order-item-status {
   background-color: #aaa;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .order-item-status > .status {
