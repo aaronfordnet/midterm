@@ -79,7 +79,8 @@ div.favourite-item-row {
 }
 
 .item2 {
-  font-size: 20px;
+  font-size: .8em;
+  font-weight: bold;
 }
 
 #total {
@@ -206,7 +207,8 @@ div.total-container {
   margin: 1.5em auto 1.5em;
 }
 
-.container.admin.header {
+.container.header {
+  background-color: #fcfcfc;
   border-radius: 5em;
   padding: .25em;
   max-width: 700px;

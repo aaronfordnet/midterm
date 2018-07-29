@@ -88,9 +88,13 @@ function filterOrders(orderData) {
 function appendOrders(orderData) {
   $('#admin-list').empty();
   const filtered = filterOrders(orderData);
-  filtered.forEach(function(order) {
-    $('#admin-list').append(order);
-  });
+  if (filtered.length < 1) {
+    $('<p style="margin: 1.5em;">').addClass("text-center").text("No current orders!").appendTo($("#admin-list"));
+  } else {
+    filtered.forEach(function(order) {
+      $('#admin-list').append(order);
+    });
+  }
 }
 
 // Loads all the orders via an ajax request
@@ -99,6 +103,7 @@ function loadOrders() {
     method: "GET",
     url: "/api/admin",
     success: function(orderData) {
+      // if (orderData)
       appendOrders(orderData);
     },
     error: function(err) {
