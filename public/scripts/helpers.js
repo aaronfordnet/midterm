@@ -5,14 +5,14 @@
 function popup() {
     $("#logindiv").css("display", "block");
     $("h1").hide();
-    $('.container').css("display", "none");
+    $(".container").css("display", "none");
   }
 
 // Returns an object of unique items and quantities in an order
 function countItems(items) {
   const counted = {};
 
-  items.forEach(item => {
+  items.forEach(function(item) {
     counted[item.name] = counted[item.name] ? counted[item.name] + 1 : 1;
   });
   return counted;
@@ -42,7 +42,7 @@ function createOrder(order, orderItems) {
   const counted = countItems(orderItems);
 
   for (let key in counted) {
-    $("<li>").text(`${counted[key]} ${key}`).appendTo($ul);
+    $("<li>").text(counted[key] + " " + key).appendTo($ul);
   }
 
   const $confirm = $("<div>").addClass("col-sm-3 col-xs-12 admin-item-confirm").appendTo($order);
@@ -57,7 +57,7 @@ function createOrder(order, orderItems) {
   } else if (order.status === "Confirmed") {
 
     const $form = $("<form>").addClass("admin").attr({ class: "Ready" }).appendTo($confirm);
-    $("<p>").text(`ETA: ${moment(order.eta).fromNow()}`).appendTo($form);
+    $("<p>").text("ETA: " + moment(order.eta).fromNow()).appendTo($form);
     $("<button>").addClass("btn btn-info").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
 
   } else if (order.status === "Ready") {
@@ -73,7 +73,7 @@ function createOrder(order, orderItems) {
 // Matches order items to their order #
 function filterOrders(orderData) {
   const filtered = [];
-  orderData.orders.forEach(order => {
+  orderData.orders.forEach(function(order) {
     const orderItems = orderData.items.filter(function(item) {
       return order.id === item.id;
     });
@@ -88,7 +88,7 @@ function filterOrders(orderData) {
 function appendOrders(orderData) {
   $('#admin-list').empty();
   const filtered = filterOrders(orderData);
-  filtered.forEach(order => {
+  filtered.forEach(function(order) {
     $('#admin-list').append(order);
   });
 }

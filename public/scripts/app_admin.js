@@ -21,7 +21,7 @@ $(function() {
   });
 
   loadOrders();
-  setInterval(() => {
+  setInterval(function() {
     loadOrders();
   }, 20000);
 

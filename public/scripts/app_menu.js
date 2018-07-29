@@ -1,38 +1,22 @@
 //jshint esversion: 6
 // "use strict";
 
-$(() => {
+$(function() {
 
 
   $.ajax({
     method: "GET",
     url: "/api/menu/favourites"
-  }).done((foods) => {
+  }).done(function(foods) {
     for (let food of foods) {
-      let $item = $('<div>').addClass('col-sm-12 col-xs-5 favourite-item').attr('id', `${food.id}`).html(`
-            <div class="row favourite-item-row">
-              <div class="col-sm-3 col-xs-12 favourite-item-img">
-                <img src=${food.imgurl} />
-              </div>
-              <div class="col-sm-7 col-xs-12 favourite-item-description">
-                <h3>${food.name}</h3>
-                <p>${food.description}</p>
-              </div>
-              <div class="col-sm-2 col-xs-12 favourite-item-qty">
-                <p class="food-item-price">$${food.price / 100}</p>
-                <p>Quantity:</p>
-                <input class="quantity" type="number" min="0" max="99" name="item_${food.id}" value="0">
-                <span class="subtotal">Subtotal: </span><br>$<span class="sum">0</span>
-              </div>
-            </div>
-        `);
+      let $item = $('<div>').addClass('col-sm-12 col-xs-5 favourite-item').attr('id', food.id).html('<div class="row favourite-item-row"><div class="col-sm-3 col-xs-12 favourite-item-img"><img src=' + food.imgurl + ' /></div><div class="col-sm-7 col-xs-12 favourite-item-description"><h3>' + food.name + '</h3><p>' + food.description + '</p></div><div class="col-sm-2 col-xs-12 favourite-item-qty"><p class="food-item-price">$' + (food.price / 100) + '</p><p>Quantity:</p><input class="quantity" type="number" min="0" max="99" name="item_' + food.id + '" value="0"><span class="subtotal">Subtotal: </span><br>$<span class="sum">0</span></div></div>');
       $('#menu-favourites').append($item);
     }
 
     $.ajax({
       method: "GET",
       url: "/api/menu"
-    }).done((foods) => {
+    }).done(function(foods) {
       for (let food of foods) {
         let numFavs = $('div.col-sm-12.col-xs-5.favourite-item').length;
         let isFav = 0;
@@ -95,7 +79,7 @@ $(() => {
     $('.sum').each(function() {
       total += parseFloat(this.innerHTML)
     });
-    $('#order-total').text(total.toFixed(2));
+    $('span.order-total').text(total.toFixed(2));
   }
 
   getTotal();
@@ -151,11 +135,6 @@ $(() => {
     var offset = menuYloc + $(document).scrollTop() + "px";
     $(name).animate({ top: offset }, { queue: false });
   });
-
-
-
-
-
 
 
 });
