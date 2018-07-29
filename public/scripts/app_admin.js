@@ -6,13 +6,6 @@ $(function() {
 
   popup();
 
-  function popup() {
-    $("#logindiv").css("display", "block");
-    $("h1").hide();
-    $('.container').css("display", "none");
-  }
-
-
   $("#loginbtn").click(function() {
     var name = $("#username").val();
     var password = $("#password").val();
@@ -27,6 +20,10 @@ $(function() {
   });
 
   loadOrders();
+  // setInterval(() => {
+  //   window.location.reload(true);
+  // }, 30000);
+  // window.location.reload(true);
 
   $("#admin-list").on("submit", "#Confirmed", function(event) {
     event.preventDefault();

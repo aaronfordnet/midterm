@@ -1,6 +1,13 @@
 // jshint esversion: 6
 "use strict";
 
+// Login for access to admin page
+function popup() {
+    $("#logindiv").css("display", "block");
+    $("h1").hide();
+    $('.container').css("display", "none");
+  }
+
 // Returns an object of unique items and quantities in an order
 function countItems(items) {
   const counted = {};
