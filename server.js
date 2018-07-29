@@ -205,12 +205,12 @@ app.post('/sms', (req, res) => {
     );
 });
 
-
+// TWILIO contact us outgoing call
 app.get("/contact", (req, res) => {
   console.log('Contacting Benditos...');
   // client.calls
   //     .create({
-  //        url: 'http://demo.twilio.com/docs/voice.xml',
+  //        url: 'http://aaronford.net/contact.xml',
   //        to: adminPhone,
   //        from: '+16049016036'
   //      })
