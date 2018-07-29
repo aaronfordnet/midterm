@@ -6,16 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_menu.js"></script>
 </head>
 
 <body>
-  <h1 class="text-center logo"><a class="logo" href="/">Bendito's Taqueria</a></h1>
+  <img id="background" src="/images/bigtacos.jpg" style="border-radius: 0;">
+  <div class="container admin header">
+    <h1 class="text-center logo">
+      <img id="logoimg" src="/images/burrito.png">
+      <a class="logo" href="/">
+      Bendito's Taqueria
+    </a>
+  </h1>
+  </div>
+
   <div class="container menu">
     <form class="menu" action="/" method="post">
       <h2 class="text-center">Order Takeout</h2>
