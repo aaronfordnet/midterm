@@ -39,6 +39,7 @@ a.logo:hover {
   background: #eee;
   padding: 20px 40px 40px;
   margin: 10px auto 50px;
+  border-radius: 2em;
 }
 
 form .menu {
@@ -53,12 +54,26 @@ div.food-item {
   margin: 10px 10px;
 }
 
+
 div.food-item-row {
   display: flex;
   flex-wrap: wrap;
 }
 
-.item2 {
+
+div.favourite-item {
+  padding-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+div.favourite-item-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item2{
   font-size: 20px;
 }
 
@@ -90,6 +105,26 @@ a.anchor {
   cursor: pointer;
 }
 
+div.favourite-item-img {
+  background: #ddd;
+  padding: 0;
+}
+
+div.favourite-item-img img {
+  width: 100%;
+}
+
+div.favourite-item-qty {
+  background: #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 0 1em 1em 0;
+}
+
+div.favourite-item-description {
+  background: #ddd;
+}
+
 div.food-item-img {
   background: #ddd;
   padding: 0;
@@ -103,6 +138,7 @@ div.food-item-qty {
   background: #ddd;
   padding: 10px;
   text-align: center;
+  border-radius: 0 1em 1em 0;
 }
 
 div.food-item-description {
@@ -118,8 +154,14 @@ p.food-item-price {
   margin: 0;
 }
 
+p.favourite-item-price {
+  font-weight: 800;
+  margin:0;
+}
+
 input.quantity {
   width: 50px;
+  border-radius: 5px;
 }
 
 
@@ -226,6 +268,10 @@ input.eta-time {
   text-align: center;
   padding-left: 5px;
   margin-bottom: 5px;
+}
+
+img{
+  border-radius: 50% 0 0 50%;
 }
 
 ul {
