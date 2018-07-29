@@ -46,7 +46,7 @@
           <% for (let order of newArray) { %>
             <% if (order.imgurl) { %>
 
-              <div class="row order-item-row">
+              <div class="row">
                 <div class="col-sm-4 col-xs-4 order-item-single">
                   <p>
                     <%= order.name %>
@@ -68,27 +68,24 @@
                 <div class="col-sm-12 col-xs-12 order-item">
                   <h3>Thanks for your order, <%= order.name %>!</h3>
                   <h4>Your order number is #<%= order.id %></h4>
+                  <h3>Status: <%= order.status %></h3>
                   <% if (order.status === "Placed"){ %>
-                    <p class="ordermsg">Hi
-                      <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
+                    <p class="ordermsg">Your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
                     <% } else if (order.status === "Confirmed") {%>
-                      <p class="ordermsg">Hi
-                        <%= order.name %>, your order will be ready for pickup
+                      <p class="ordermsg">Your order will be ready for pickup
                           <%= moment(order.eta).fromNow() %> approximately! We will text you once it is!</p>
                       <% } else if (order.status === "Ready") { %>
-                        <p class="ordermsg">Hi
-                          <%= order.name %>, your order is READY for pickup! YAY! See you soon!</p>
+                        <p class="ordermsg">Your order is READY for pickup! YAY! See you soon!</p>
                         <% } else { %>
-                          <p class="ordermsg">Hi
-                            <%= order.name %>, this order has already been picked up!</p>
+                          <p class="ordermsg">This order has already been picked up!</p>
                           <p>Would you like to <a href="/">place a new one?</a></p>
                           <% } %>
-                            <h3>Status: <%= order.status %></h3>
+
                             <br>
                             <h4>Here's your order:</h4>
                 </div>
-                <div class="col-sm-12 col-xs-12 order-item border">
-                  <div class="row order-item-row">
+                <div class="col-sm-12 col-xs-12 order-item-border">
+                  <div class="row">
                     <div class="col-sm-4 col-xs-4 order-item-single">
                       <p class="table-heading">Item:</p>
                     </div>
