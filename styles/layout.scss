@@ -2,9 +2,12 @@ body {
   background-image: url('/images/bigtacos.jpg');
   background-color: #EEE;
 
-  h1 {
-    color: #244751;
+  h1, h2, h3, h4, h5, h6 {
+    color: #111;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
   }
+
 }
 
 html {
@@ -174,7 +177,7 @@ div.admin-item-status {
   background-color: #aaa;
 }
 
-.admin-item-status>.status {
+.admin-item-status > .status {
   color: #7b7b7b;
   text-align: center;
 }
@@ -232,7 +235,7 @@ div.order-item-status {
   background-color: #aaa;
 }
 
-.order-item-status>.status {
+.order-item-status > .status {
   color: #7b7b7b;
   text-align: center;
 }
