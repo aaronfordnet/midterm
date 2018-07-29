@@ -59,8 +59,7 @@ module.exports = (knex) => {
         console.error(err);
       });
 
-    // Twilio message to user
-
+    // TWILIO: message to user
     console.log('Sending confirmation text to customer...');
     // client.messages.create({
     //   from: '+16049016036',
