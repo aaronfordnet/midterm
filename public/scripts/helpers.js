@@ -29,11 +29,11 @@ function createOrder(order, orderItems) {
 
   const $status = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-status").appendTo($order);
    if (order.status === "Placed") {
-    $('<h5 class="status"><span class="current" style="color: #3479b7;">Placed</span> → Confirmed → Ready for Pickup</h5>').appendTo($status);
+    $('<h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup</h5>').appendTo($status);
   } else if (order.status === "Confirmed") {
-    $('<h5 class="status">Placed → <span class="current" style="color: #ffc107;">Confirmed</span> → Ready for Pickup</h5>').appendTo($status);
+    $('<h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup</h5>').appendTo($status);
   } else if (order.status === "Ready") {
-    $('<h5 class="status">Placed → Confirmed → <span class="current" style="color: #28a745;">Ready for Pickup</span></h5>').appendTo($status);
+    $('<h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span></h5>').appendTo($status);
   }
 
   const $foods = $("<div>").addClass("col-sm-9 col-xs-12 admin-item-foods").appendTo($order);
@@ -58,12 +58,12 @@ function createOrder(order, orderItems) {
 
     const $form = $("<form>").addClass("admin").attr({ class: "Ready" }).appendTo($confirm);
     $("<p>").text(`ETA: ${moment(order.eta).fromNow()}`).appendTo($form);
-    $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
+    $("<button>").addClass("btn btn-info").attr({ id: order.id }).text("Ready for pickup").appendTo($form);
 
   } else if (order.status === "Ready") {
 
     const $form = $("<form>").addClass("admin").attr({ class: "picked-up" }).appendTo($confirm);
-    $("<button>").addClass("btn btn-primary").attr({ id: order.id }).text("Picked Up").appendTo($form);
+    $("<button>").addClass("btn btn-success").attr({ id: order.id }).text("Picked Up").appendTo($form);
 
   }
   return $order;
