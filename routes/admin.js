@@ -62,15 +62,15 @@ module.exports = (knex) => {
       });
 
     // TWILIO: message to user
-    // console.log('Sending confirmation text to customer...');
-    client.messages.create({
-      from: '+16049016036',
-      to: adminPhone,
-      body: 'Hi ' + name + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://bendito.herokuapp.com/orders/' + id + ' to track your order.'
-       })
-      .then(message => {
-        console.log('Success! Confirmation text sent to customer');
-      }).done();
+    console.log('Sending confirmation text to customer...');
+    // client.messages.create({
+    //   from: '+16049016036',
+    //   to: adminPhone,
+    //   body: 'Hi ' + name + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://bendito.herokuapp.com/orders/' + id + ' to track your order.'
+    //    })
+    //   .then(message => {
+    //     console.log('Success! Confirmation text sent to customer');
+    //   }).done();
 
   });
 
