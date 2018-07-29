@@ -10,7 +10,7 @@ $(function() {
     var name = $("#username").val();
     var password = $("#password").val();
     if (username == "" || password == "") {
-      alert("Username or Password was Wrong");
+      alert("Username or password is incorrect.");
     } else {
         $("#logindiv").css("display", "none");
         $(this).parent().parent().hide();
@@ -21,7 +21,7 @@ $(function() {
 
   loadOrders();
   // setInterval(() => {
-  //   window.location.reload(true);
+    // window.location.reload(true);
   // }, 30000);
   // window.location.reload(true);
 

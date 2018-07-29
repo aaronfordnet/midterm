@@ -24,7 +24,7 @@ function createOrder(order, orderItems) {
 
   const $head = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-head").appendTo($order);
 
-  $("<h4>").attr({ customer: order.name }).text(`Order ${order.id} | ${order.name} | ${order.phone}`).appendTo($head);
+  $("<h4>").attr({ customer: order.name }).text(`Order #${order.id} | ${order.name} | ${order.phone}`).appendTo($head);
   $("<p>").text(`Placed at: ${moment(order.placed_at).format("DD-MM-YYYY hh:mm a")}`).appendTo($head);
 
   const $status = $("<div>").addClass("col-sm-12 col-xs-12 admin-item-status").appendTo($order);
