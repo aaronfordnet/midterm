@@ -4,7 +4,7 @@
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
-const ENV = process.env.ENV || "production";
+const ENV = process.env.ENV || "development";
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const adminPhone = process.env.TWILIO_ADMIN_PHONE;

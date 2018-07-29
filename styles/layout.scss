@@ -382,3 +382,67 @@ div.order-item-border {
   position: relative;
   border: .25em solid #337ab7;
 }
+
+
+/*SOCIAL MEDIA BAR*/
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  margin-left:5em;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 0.3em;
+  padding: 8px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.google {
+  background: #dd4b39;
+  color: white;
+}
+
+.whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.pinterest {
+  background: #bb0000;
+  color: white;
+}
+
+.envelope {
+  background: #777;
+  color: white;
+}
+
+
+
+
+
+
