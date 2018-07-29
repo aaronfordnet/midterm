@@ -2,13 +2,16 @@
 <html lang="en">
 
 <head>
-  <title><%= newArray[0].name %>'s Order at Bendito's Taqueria</title>
+  <title>
+    <%= newArray[0].name %>'s Order at Bendito's Taqueria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
   <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:500,700" rel="stylesheet">
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_orderstatus.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -19,22 +22,23 @@
   <div class="container menu">
 
     <h2 class="text-center">Order Status:</h2>
-    <!-- START Inster Area -->
     <div id="status-list" class="row">
+      <!-- START Inster Area -->
+
 
       <div class="row order-item-row">
         <div class="col-sm-12 col-xs-12 order-item-status">
           <% for (let order of newArray) { %>
             <% if (order.status === "Placed") { %>
-              <h4 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup → Picked Up</h4>
-            <% } else if (order.status === "Confirmed") { %>
-              <h4 class="status">Placed→ <span class="current">Confirmed</span> → Ready for Pickup → Picked Up</h4>
-            <% } else if (order.status === "Ready"){ %>
-              <h4 class="status">Placed→ Confirmed → <span class="current">Ready for Pickup</span> → Picked Up</h4>
-            <% } else if (order.status === "Picked Up"){ %>
-              <h4 class="status">Placed→ Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h4>
-            <% } %>
-          <% } %>
+              <h5 class="status"><span class="current">Placed</span> → Confirmed → Ready for Pickup → Picked Up</h5>
+              <% } else if (order.status === "Confirmed") { %>
+                <h5 class="status">Placed → <span class="current">Confirmed</span> → Ready for Pickup → Picked Up</h5>
+                <% } else if (order.status === "Ready"){ %>
+                  <h5 class="status">Placed → Confirmed → <span class="current">Ready for Pickup</span> → Picked Up</h5>
+                  <% } else if (order.status === "Picked Up"){ %>
+                    <h5 class="status">Placed → Confirmed → Ready for Pickup → <span class="current">Picked Up</span></h5>
+                    <% } %>
+                      <% } %>
         </div>
 
         <div class="col-sm-12 col-xs-12 order-item">
@@ -44,59 +48,69 @@
 
               <div class="row order-item-row">
                 <div class="col-sm-4 col-xs-4 order-item-single">
-                  <p><%= order.name %></p>
+                  <p>
+                    <%= order.name %>
+                  </p>
                 </div>
                 <div class="col-sm-4 col-xs-4 order-item-single">
-                  <p><%= order.count %></p>
+                  <p>
+                    <%= order.count %>
+                  </p>
                 </div>
                 <div class="col-sm-4 col-xs-4 order-item-single">
                   <span class="sum"> $<%= ((order.price * order.count)/100).toFixed(2)%> </span>
 
+                </div>
               </div>
-        </div>
 
-        <% } else { %>
-
-          <div class="col-sm-12 col-xs-12 order-item">
-            <h3>Thank you for placing an order!</h3>
-            <h4>Your order number is #<%= order.id %></h4>
-            <% if (order.status === "Placed"){ %>
-            <p class="ordermsg">Hi <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
-              <% } else if (order.status === "Confirmed") {%>
-              <p class="ordermsg">Hi <%= order.name %>, your order will be ready for pickup <%= moment(order.eta).fromNow() %> approximately! We will text you once it is!</p>
-              <% } else if (order.status === "Ready") { %>
-              <p class="ordermsg">Hi <%= order.name %>, your order is READY for pickup! YAY! See you soon!</p>
               <% } else { %>
-              <p class="ordermsg">Hi <%= order.name %>, this order has already been picked up!</p>
-              <p>Would you like to <a href="/">place a new one?</a></p>
-              <% } %>
-            <h3>Status: <%= order.status %></h3>
-            <br>
-            <h4>Here's your order:</h4>
-          </div>
-          <div class="col-sm-12 col-xs-12 order-item border">
-              <div class="row order-item-row">
-                <div class="col-sm-4 col-xs-4 order-item-single">
-                  <p class="table-heading">Item:</p>
+
+                <div class="col-sm-12 col-xs-12 order-item">
+                  <h3>Thanks for your order, <%= order.name %>!</h3>
+                  <h4>Your order number is #<%= order.id %></h4>
+                  <% if (order.status === "Placed"){ %>
+                    <p class="ordermsg">Hi
+                      <%= order.name %>, your order has been successfully sent to the Bendito's team. You'll receive a text confirmation with ETA soon!</p>
+                    <% } else if (order.status === "Confirmed") {%>
+                      <p class="ordermsg">Hi
+                        <%= order.name %>, your order will be ready for pickup
+                          <%= moment(order.eta).fromNow() %> approximately! We will text you once it is!</p>
+                      <% } else if (order.status === "Ready") { %>
+                        <p class="ordermsg">Hi
+                          <%= order.name %>, your order is READY for pickup! YAY! See you soon!</p>
+                        <% } else { %>
+                          <p class="ordermsg">Hi
+                            <%= order.name %>, this order has already been picked up!</p>
+                          <p>Would you like to <a href="/">place a new one?</a></p>
+                          <% } %>
+                            <h3>Status: <%= order.status %></h3>
+                            <br>
+                            <h4>Here's your order:</h4>
                 </div>
-                <div class="col-sm-4 col-xs-4 order-item-single">
-                  <p class="table-heading">Quantity:</p>
-                </div>
-                <div class="col-sm-4 col-xs-4 order-item-single">
-                  <p class="table-heading">Price:</p>
-                </div>
-              </div>
-            <% }
+                <div class="col-sm-12 col-xs-12 order-item border">
+                  <div class="row order-item-row">
+                    <div class="col-sm-4 col-xs-4 order-item-single">
+                      <p class="table-heading">Item:</p>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 order-item-single">
+                      <p class="table-heading">Quantity:</p>
+                    </div>
+                    <div class="col-sm-4 col-xs-4 order-item-single">
+                      <p class="table-heading">Price:</p>
+                    </div>
+                  </div>
+                  <% }
             } %>
-          </div>
-          <div class="total-container">
-            <span class="total">Total $</span>
-            <span id="order-total"></span>
-          </div>
+                </div>
+                <div class="total-container">
+                  <span class="total">Total $</span>
+                  <span id="order-total"></span>
+                </div>
+        </div>
       </div>
+
+      <!-- END Insert Area -->
     </div>
-  </div>
-  <!-- END Insert Area -->
   </div>
 </body>
 
