@@ -5,10 +5,13 @@
   <title>Bendito's Taqueria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_admin.js"></script>
   <script type="text/javascript" src="/scripts/helpers.js"></script>
@@ -27,24 +30,27 @@
   </div>
 
   <section id="logindiv">
-    <form class="form" action="#" id="login">
-      <h3 class="login">Login Form</h3>
+    <form class="form" id="login">
+      <h3 class="login">Admin Login</h3>
       <hr/>
-      <p>
-        <label>Username:</label>
+      <label>Username:</label>
+      <p class="text-center">
         <input type="text" id="username" placeholder="Ex - Jeremy" autocomplete="off" />
       </p>
-      <p>
-        <label>Password:</label>
+      <label>Password:</label>
+      <p class="text-center">
         <input type="password" id="password" placeholder="************" autocomplete="off" />
       </p>
 
-      <input type="submit" id="loginbtn" value="Login" style="width: 100px;" />
+      <div class="text-center">
+        <button id="loginbtn" class="btn btn-primary" value="Login">&nbsp&nbsp&nbspLogin&nbsp&nbsp&nbsp</button>
+      </div>
     </form>
   </section>
   <div class="container admin">
     <h2 class="text-center">Manage Orders</h2>
     <div id="admin-list" class="row">
+      <% %>
       <!-- START Insert Area -->
       <!-- END Insert Area -->
     </div>
