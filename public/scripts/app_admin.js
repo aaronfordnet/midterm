@@ -4,6 +4,28 @@
 // All functions called in this file are defined in helpers.js
 $(function() {
 
+  popup();
+
+  function popup() {
+    $("#logindiv").css("display", "block");
+    $("h1").hide();
+    $('.container').css("display", "none");
+  }
+
+
+  $("#loginbtn").click(function() {
+    var name = $("#username").val();
+    var password = $("#password").val();
+    if (username == "" || password == "") {
+      alert("Username or Password was Wrong");
+    } else {
+        $("#logindiv").css("display", "none");
+        $(this).parent().parent().hide();
+        $("h1").show();
+        $('.container').css("display", "block");
+    }
+  });
+
   loadOrders();
 
   $("#admin-list").on("submit", "#Confirmed", function(event) {
