@@ -117,7 +117,7 @@ a.anchor {
 }
 
 div.favourite-item-img {
-  background: #ddd;
+  background: #fcfcfc;
   padding: 0;
 }
 
@@ -137,7 +137,7 @@ div.favourite-item-description {
 }
 
 div.food-item-img {
-  background: #ddd;
+  background: #fcfcfc;
   padding: 0;
 }
 
@@ -177,8 +177,9 @@ input.quantity {
 
 
 div.total-container {
-  font-size: 2em;
+  font-size: 1.8em;
   float: right;
+  margin-right: 15px;
 }
 
 #menu-food>h3 {
@@ -305,20 +306,22 @@ ul {
 div.order-item-row {
   display: flex;
   flex-wrap: wrap;
+  border-radius: 10px;
 }
 
 div.order-item {
   background-color: #ccc;
   padding: 10px;
   text-align: center;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 div.order-item-status {
   background-color: #aaa;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .order-item-status > .status {
@@ -342,12 +345,16 @@ div.order-item-status {
 
 p.table-heading {
   font-weight: 600;
+  text-decoration: underline;
 }
 
-.border {
-  border: 1px solid #333;
-}
 
+div.order-item-border {
+  background-color: #ccc;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #777;
+}
 
 /* Admin Login Box*/
 
