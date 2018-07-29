@@ -26,7 +26,6 @@ module.exports = (knex) => {
       .limit(3)
       // .having(knex.raw(('count(order_foods.food_id) > 2')))
       .then((results) => {
-        console.log(results)
         res.json(results);
     });
   });

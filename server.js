@@ -196,7 +196,7 @@ app.post('/sms', (req, res) => {
     // TWILIO text confirmation to restaurant
     console.log('Sending confirmation text to restaurant...');
     // twiml.message('\n\nConfirmation sent!\n\nOrder #' + id + ' will be notified with their approximate pickup time (' + minutes + ' minutes)')
-    //
+
     // res.writeHead(200, {
     //   'Content-Type': 'text/xml'
     // });
@@ -207,7 +207,7 @@ app.post('/sms', (req, res) => {
 
 // TWILIO contact us outgoing call
 app.get("/contact", (req, res) => {
-  console.log('Contacting Benditos...');
+  console.log("Contacting Bendito's...");
   // client.calls
   //     .create({
   //        url: 'http://aaronford.net/contact.xml',
