@@ -80,7 +80,6 @@ function filterOrders(orderData) {
     if (order.status !== "Picked Up") {
       filtered.push(createOrder(order, orderItems));
     }
-    // console.log("status", order.status);
   });
   return filtered;
 }
@@ -100,7 +99,6 @@ function loadOrders() {
     method: "GET",
     url: "/api/admin",
     success: function(orderData) {
-      console.log(orderData.users);
       appendOrders(orderData);
     },
     error: function(err) {

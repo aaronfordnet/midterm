@@ -42,7 +42,6 @@ module.exports = (knex) => {
     let minutes = req.body.minutes;
     let status = req.body.status;
     let timeConfirmed = moment().utcOffset("-0700").add(minutes, 'minutes').format();
-    console.log(timeConfirmed);
     let name = req.body.name;
     if (status === "Placed") {
       status = "Confirmed";

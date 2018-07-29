@@ -77,33 +77,15 @@ $(function() {
       id: $(this).children('button').attr('id'),
       status: "Picked Up",
     };
-    console.log(data.status);
 
     $.ajax({
       method: "PUT",
       url: "/api/admin/pickup",
       data: data,
       success: function(result) {
-
-      console.log("happening", result);
-
-        // $.ajax({
-        //   method: "GET",
-        //   url: "/api/admin",
-        //   success: function(result, other) {
-        //     // console.log(users);
-        //     console.log("RESULT", result);
-        //     loadOrders();
-        //   },
-        //   error: function(err) {
-        //     console.error(err);
-        //   }
-        // });
-
         loadOrders();
       },
       error: function(err) {
-        console.log("error is happening");
         console.error(err);
       }
     });
