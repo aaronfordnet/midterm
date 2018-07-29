@@ -17,7 +17,7 @@ $(() => {
     $.ajax({
     method: "GET",
     url: "/orders",
-    success: function(res, res) {
+    success: function(req, res) {
       let status = $("span.current").text();
       if (status !== "Picked Up") {
         window.location.reload(true);
