@@ -162,6 +162,7 @@ app.post('/sms', (req, res) => {
   let timeConfirmed = moment().utcOffset("-0700").add(minutes, 'minutes').format();
   let status = 'Confirmed';
 
+
   knex("orders")
     .where({
       id: id
@@ -192,24 +193,31 @@ app.post('/sms', (req, res) => {
       //   }).done();
     });
 
-  // TWILIO text confirmation to restaurant
-  console.log('Sending confirmation text to restaurant...');
-  // twiml.message('\n\nConfirmation sent!\n\nOrder #' + id + ' will be notified with their approximate pickup time (' + minutes + ' minutes)')
+    // TWILIO text confirmation to restaurant
+    console.log('Sending confirmation text to restaurant...');
+    // twiml.message('\n\nConfirmation sent!\n\nOrder #' + id + ' will be notified with their approximate pickup time (' + minutes + ' minutes)')
 
-  res.writeHead(200, {
-    'Content-Type': 'text/xml'
-  });
-  res.end(
-    twiml.toString()
-  );
+    res.writeHead(200, {
+      'Content-Type': 'text/xml'
+    });
+    res.end(
+      twiml.toString()
+    );
 });
 
 
-// 404 error redirects to main page
-app.use((req, res) => {
-  res.status(404).redirect("/");
+app.get("/contact", (req, res) => {
+  console.log('Contacting Benditos...');
+  // client.calls
+  //     .create({
+  //        url: 'http://demo.twilio.com/docs/voice.xml',
+  //        to: adminPhone,
+  //        from: '+16049016036'
+  //      })
+  //     .then(call => console.log(call.sid))
+  //     .done();
+  res.redirect("/");
 });
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
