@@ -6,12 +6,12 @@ $(function() {
 
   loadOrders();
 
-  $("#admin-list").on("submit", "#confirm", function(event) {
+  $("#admin-list").on("submit", "#Confirmed", function(event) {
     event.preventDefault();
-    let id = $(this).children('input').attr('id');
+    let id = $(this).children('button').attr('id');
     let minutes = $(this).serialize().replace("eta=", "");
     let name = $(this).parent().prev().prev().prev().children('h4').attr('customer');
-    let status = $(this).parent().prev().prev().children('h5').children('span').text();
+    let status = $(this).attr("id");
     let data = {
       id: id,
       minutes: minutes,
@@ -21,7 +21,7 @@ $(function() {
 
     $.ajax({
       method: "PUT",
-      url: "/api/admin",
+      url: "/api/admin/confirm",
       data: data,
       success: function(result) {
         loadOrders();
@@ -29,7 +29,67 @@ $(function() {
       error: function(err) {
         console.error(err);
       }
-
     });
   });
+
+  $("#admin-list").on("submit", "#Ready", function(event) {
+    event.preventDefault();
+    let data = {
+      id: $(this).children('button').attr('id'),
+      status: $(this).attr("id")
+    };
+
+    $.ajax({
+      method: "PUT",
+      url: "/api/admin/ready",
+      data: data,
+      success: function(result) {
+        loadOrders();
+      },
+      error: function(err) {
+        console.error(err);
+      }
+    });
+  });
+
+  $("#admin-list").on("submit", "#picked-up", function(event) {
+    event.preventDefault();
+    let data = {
+      id: $(this).children('button').attr('id'),
+      status: "Picked Up",
+    };
+
+    $.ajax({
+      method: "PUT",
+      url: "/api/admin/pickup",
+      data: data,
+      success: function(result) {
+        loadOrders();
+      },
+      error: function(err) {
+        console.error(err);
+      }
+    });
+  });
+
+  $("#admin-list").on("submit", "#picked-up", function(event) {
+    event.preventDefault();
+    // let data = {
+    //   id: $(this).children('button').attr('id'),
+    //   status: $(this).attr("id"),
+    // };
+
+    $.ajax({
+      method: "GET",
+      url: "/api/admin",
+      // data: data,
+      success: function(result) {
+        loadOrders();
+      },
+      error: function(err) {
+        console.error(err);
+      }
+    });
+  });
+
 });

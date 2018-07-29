@@ -34,7 +34,7 @@ module.exports = (knex) => {
       });
   });
 
-  router.put("/", (req, res) => {
+  router.put("/confirm", (req, res) => {
     let id = req.body.id;
     let minutes = req.body.minutes;
     let status = req.body.status;
@@ -72,6 +72,42 @@ module.exports = (knex) => {
     //   }).done();
 
   });
+
+
+  // Updates order info/page to "ready" status
+  router.put("/ready", (req, res) => {
+    let id = req.body.id;
+    let status = req.body.status;
+    if (status === "Confirmed") {
+      status = "Ready";
+    }
+
+    knex("orders")
+      .where({ id: id })
+      .update({ status: status }).then((id) => {
+        res.json({ result: 'true' });
+      }).error(err => {
+        console.error(err);
+      });
+    });
+
+  // Updates order info/page to "Picked Up" status
+  router.put("/pickup", (req, res) => {
+    let id = req.body.id;
+    let status = req.body.status;
+    if (status === "Ready") {
+      status = "Picked Up";
+    }
+
+    knex("orders")
+      .where({ id: id })
+      .update({ status: status }).then((id) => {
+        res.json({ result: 'true' });
+      }).error(err => {
+        console.error(err);
+      });
+    });
+
 
   return router;
 };
