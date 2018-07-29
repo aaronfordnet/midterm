@@ -1,5 +1,7 @@
 body {
-  background-color: #EEE;
+  // background-color: #e4e4e6;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #e3e3e5;
 
   h1, h2, h3, h4, h5, h6 {
     color: #111;
@@ -28,6 +30,15 @@ a.logo:hover {
   text-decoration: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 
 
 /* ===================
@@ -36,6 +47,7 @@ a.logo:hover {
 
 .container.menu {
   max-width: 800px;
+  min-width: 400px;
   background: #eee;
   padding: 20px 40px 40px;
   margin: 10px auto 50px;
@@ -106,7 +118,7 @@ a.anchor {
 }
 
 div.favourite-item-img {
-  background: #ddd;
+  background: #fcfcfc;
   padding: 0;
 }
 
@@ -126,7 +138,7 @@ div.favourite-item-description {
 }
 
 div.food-item-img {
-  background: #ddd;
+  background: #fcfcfc;
   padding: 0;
 }
 
@@ -166,8 +178,9 @@ input.quantity {
 
 
 div.total-container {
-  font-size: 2em;
+  font-size: 1.8em;
   float: right;
+  margin-right: 15px;
 }
 
 #menu-food>h3 {
@@ -186,8 +199,11 @@ div.total-container {
 #background {
   position: absolute;
   top: 0;
-  width: 100%;
-  height: 413px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  // height: 100%;
   /*transform: matrix(1, 0, 0, 1, 0, 0);*/
   z-index: -10;
 }
@@ -197,7 +213,7 @@ div.total-container {
 }
 
 .container.admin {
-  border-radius: 1em;
+  border-radius: 2em;
   /*border: .25em #222 solid;*/
   max-width: 800px;
   background: #fcfcfc;
@@ -209,7 +225,9 @@ div.total-container {
   /*border-radius: 1em;*/
   /*background-color: #fcfcfc;*/
   /*max-width: 800px;*/
+  border-radius: 5em;
   padding: .25em;
+  max-width: 700px;
   /*margin: 0 auto 0;*/
 }
 
@@ -221,7 +239,7 @@ div.admin-item-row {
 }
 
 div.admin-item-head {
-  border-radius: .5em .5em 0 0;
+  border-radius: .75em .75em 0 0;
   background-color: #aaa;
   padding: 10px;
   display: flex;
@@ -231,7 +249,7 @@ div.admin-item-head {
 
 div.admin-item-head p {
   margin-top: 10px;
-  font-weight: 600;
+  font-weight: bold;
   text-align: right;
 }
 
@@ -241,22 +259,22 @@ div.admin-item-status {
 
 .admin-item-status > .status {
   color: #7b7b7b;
-  font-weight: 600;
+  font-weight: bold;
   text-align: center;
 }
 
 span.current {
-  color: #3479b7;
+  color: #2e6ca3;
 }
 
 div.admin-item-foods {
-  border-radius: 0 0 0 .5em;
+  border-radius: 0 0 0 .75em;
   background-color: #ccc;
   padding: 20px 10px 10px;
 }
 
 div.admin-item-confirm {
-  border-radius: 0 0 .5em 0;
+  border-radius: 0 0 .75em 0;
   background-color: #ccc;
   text-align: center;
   padding: 10px 10px 20px 10px;
@@ -289,16 +307,22 @@ ul {
 div.order-item-row {
   display: flex;
   flex-wrap: wrap;
+  border-radius: 10px;
 }
 
 div.order-item {
   background-color: #ccc;
   padding: 10px;
   text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 div.order-item-status {
   background-color: #aaa;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .order-item-status > .status {
@@ -322,40 +346,47 @@ div.order-item-status {
 
 p.table-heading {
   font-weight: 600;
+  text-decoration: underline;
 }
 
-.border {
-  border: 1px solid #333;
-}
 
+div.order-item-border {
+  background-color: #ccc;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #777;
+}
 
 /*THIS IS A TEST*/
 
 #logindiv {
-  opacity: 0.92;
-  align-content: center;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-  background: white;
+  // opacity: 0.8;
+  // align-content: center;
+  // top: 0px;
+  // left: 0px;
+  // height: 120%;
+  padding: 2.5em;
+  // width: 110%;
+  margin-top: 6em;
+  // background: white;
   display: none;
 }
 
 #logindiv h3.login {
   font-size: 18px;
   text-align: center;
-  text-shadow: 1px 0px 3px gray;
+  // text-shadow: 1px 0px 3px gray;
 }
 
 #logindiv .form {
-  border-radius: 2px;
+  border-radius: 2em;
   padding: 20px 30px;
-  box-shadow: 0 0 15px;
+  // box-shadow: 0 0 15px;
   font-size: 14px;
   font-weight: bold;
-  width: 350px;
+  max-width: 350px;
   margin: 30px auto;
+  box-shadow: 0 0 0 2em white;
 }
 
 #logindiv input {
@@ -365,21 +396,20 @@ p.table-heading {
   border: 1px solid #999;
   border-radius: 3px;
   padding: 5px;
+  outline: none;
 }
 
-#logindiv input[type=button] {
-  background-color: #123456;
-  border: 1px solid white;
-  font-weight: bold;
-  font-size: 18px;
-  color: white;
-  width: 49%;
+#logindiv button {
+  margin: 0 auto 0;
+  max-width: 100px;
+  // text-align: center;
 }
 
 #login {
-  width: 350px;
+  max-width: 350px;
   margin: 0px;
   background-color: white;
+  opacity: 1;
   position: relative;
-  border: 5px solid rgb(90, 158, 181);
+  border: .25em solid #2e6ca3;
 }

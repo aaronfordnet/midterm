@@ -4,9 +4,10 @@
 // All functions called in this file are defined in helpers.js
 $(function() {
 
-  // popup();
+  popup();
 
-  $("#loginbtn").click(function() {
+  $("#loginbtn").click(function(e) {
+    e.preventDefault();
     var name = $("#username").val();
     var password = $("#password").val();
     if (username == "" || password == "") {
@@ -20,10 +21,9 @@ $(function() {
   });
 
   loadOrders();
-  // setInterval(() => {
-    // window.location.reload(true);
-  // }, 30000);
-  // window.location.reload(true);
+  setInterval(() => {
+    loadOrders();
+  }, 20000);
 
   $("#admin-list").on("submit", "form.Confirmed", function(event) {
     event.preventDefault();
