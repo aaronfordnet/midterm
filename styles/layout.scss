@@ -140,13 +140,34 @@ div.total-container {
       Admin Page
 =================== */
 
+#background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 413px;
+  /*transform: matrix(1, 0, 0, 1, 0, 0);*/
+  z-index: -10;
+}
+
+#logoimg {
+  height: 85px;
+}
+
 .container.admin {
   border-radius: 1em;
-  border: .25em #222 solid;
+  /*border: .25em #222 solid;*/
   max-width: 800px;
-  background: #eee;
+  background: #fcfcfc;
   padding: 20px 40px 40px;
-  margin: 10px auto 50px;
+  margin: 1.5em auto 1.5em;
+}
+
+.container.admin.header {
+  /*border-radius: 1em;*/
+  /*background-color: #fcfcfc;*/
+  /*max-width: 800px;*/
+  padding: .25em;
+  /*margin: 0 auto 0;*/
 }
 
 div.admin-item-row {
@@ -167,6 +188,7 @@ div.admin-item-head {
 
 div.admin-item-head p {
   margin-top: 10px;
+  font-weight: 600;
   text-align: right;
 }
 
@@ -174,14 +196,14 @@ div.admin-item-status {
   background-color: #aaa;
 }
 
-.admin-item-status>.status {
+.admin-item-status > .status {
   color: #7b7b7b;
+  font-weight: 600;
   text-align: center;
 }
 
 span.current {
   color: #3479b7;
-  font-weight: 600;
 }
 
 div.admin-item-foods {
