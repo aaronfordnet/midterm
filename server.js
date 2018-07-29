@@ -178,7 +178,10 @@ app.post('/sms', (req, res) => {
   );
 });
 
-
+// 404 error redirects to main page
+app.use((req, res) => {
+  res.status(404).redirect("/");
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
