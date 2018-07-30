@@ -29,4 +29,23 @@ $(function() {
   });
   }, 20000);
 
+    $('button.socialmedia').on('click', function(event){
+    event.preventDefault();
+    if($(this).siblings().is(":visible")){
+      // $(this).siblings().animate({width: 'toggle'})
+      $(this).siblings().slideUp('fast');
+    } else {
+      $(this).siblings().slideDown('fast');
+      // $(this).siblings().animate({width: 'toggle'})
+    }
+  })
+
+  $(window).resize(function() {
+  if ($(this).width() < 1000) {
+    $('ul.icon-bar li').hide();
+  } else {
+    $('ul.icon-bar li').show();
+    }
+});
+
 });
