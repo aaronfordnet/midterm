@@ -73,6 +73,7 @@ div.favourite-item {
   margin: 10px 10px;
 }
 
+
 div.favourite-item-row {
   display: flex;
   flex-wrap: wrap;
@@ -383,7 +384,6 @@ div.order-item-border {
   border: .25em solid #337ab7;
 }
 
-
 /*SOCIAL MEDIA BAR*/
 .icon-bar {
   position: fixed;
@@ -442,7 +442,39 @@ div.order-item-border {
 }
 
 
+/* ===================
+    Media Queries
+=================== */
 
 
+@media only screen and (max-width: 767px) {
+  div.favourite-item {
+      width: 45%;
+  }
+  .favourite-item-img > img {
+    border-radius: 20% 20% 0 0;
+  }
+  div.food-item-qty {
+    border-radius: 0 0 1em 1em;
+  }
 
+  div.food-item {
+      width: 45%;
+  }
+  .food-item-img > img {
+    border-radius: 20% 20% 0 0;
+  }
+  div.favourite-item-qty {
+    border-radius: 0 0 1em 1em;
+  }
 
+}
+
+@media only screen and (max-width: 540px) {
+  div.favourite-item {
+      width: 90%;
+  }
+  div.food-item {
+      width: 90%;
+  }
+}
