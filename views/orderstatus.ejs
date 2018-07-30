@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
-
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_orderstatus.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -29,14 +28,15 @@
   </h1>
   </div>
   </div>
-  <div class="icon-bar">
-    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-    <a href="#" class="google"><i class="fa fa-google"></i></a>
-    <a href="#" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
-    <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-    <a href="#" class="envelope"><i class="fa fa-envelope"></i></a>
-  </div>
+  <ul class="icon-bar">
+    <button id="smedia" class="socialmedia"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
+    <li href="#" class="facebook"><i class="fa fa-facebook"></i></li>
+    <li href="#" class="twitter"><i class="fa fa-twitter"></i></li>
+    <li href="#" class="google"><i class="fa fa-google"></i></li>
+    <li href="#" class="whatsapp"><i class="fa fa-whatsapp"></i></li>
+    <li href="#" class="pinterest"><i class="fa fa-pinterest"></i></li>
+    <li href="#" class="envelope"><i class="fa fa-envelope"></i></li>
+  </ul>
   <div class="container menu" style="padding: 1em 3.5em 3em;">
     <h2 class="text-center">Order Status:</h2>
     <div id="status-list" class="row">
@@ -107,16 +107,16 @@
                   <% }
             } %>
                 </div>
-              <div class="total-container">
-                <div>
-                  <span class="total">Total $</span> <span class="order-total"></span>
+                <div class="total-container">
+                  <div>
+                    <span class="total">Total $</span> <span class="order-total"></span>
+                  </div>
                 </div>
-              </div>
         </div>
       </div>
       <!-- END Insert Area -->
     </div>
-      <h6 class="text-center" style="margin-top: 1.5em">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></h6>
+    <h6 class="text-center" style="margin-top: 1.5em">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></h6>
   </div>
 </body>
 

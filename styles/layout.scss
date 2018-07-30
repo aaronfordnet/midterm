@@ -3,7 +3,12 @@ body {
   background-color: #e3e3e5;
 }
 
-body h1, body h2, body h3, body h4, body h5, body h6 {
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
   color: #111;
   font-weight: 600;
 }
@@ -38,14 +43,22 @@ h6 {
   padding: 0;
 }
 
+
+
 /* ===================
       Menu Page
 =================== */
+
+:focus {
+  outline-style: none;
+  outline-color: transparent;
+}
+
 .container.menu {
   max-width: 800px;
   min-width: 400px;
   background-color: #f7f7f7;
-  // padding: 20px 40px 50px 20px;
+  padding: 20px 40px 50px 20px;
   margin: 10px auto 50px;
   border-radius: 2em;
 }
@@ -119,6 +132,8 @@ div.favourite-item-row {
     font-weight: bold;
     font-size: 1.8em;
     padding: 0;
+    /*position: fixed;*/
+    z-index: 999;
   }
 
   #total {
@@ -242,13 +257,16 @@ input.quantity {
   margin-left: 12px;
 }
 
-#menu-drink > h3 {
+#menu-drink>h3 {
   margin-left: 12px;
 }
+
+
 
 /* ===================
       Admin Page
 =================== */
+
 #background {
   position: fixed;
   top: 0;
@@ -349,6 +367,7 @@ ul {
 /* ===================
   Order Status Page
 =================== */
+
 div.order-item-row {
   display: flex;
   flex-wrap: wrap;
@@ -385,7 +404,7 @@ div.order-item-status {
   justify-content: space-around;
 }
 
-.order-item-single > img {
+.order-item-single>img {
   max-height: 50px;
 }
 
@@ -404,9 +423,9 @@ div.order-item-border {
 }
 
 
-/* ===================
-  Admin Login Box
-=================== */
+
+
+/* Admin Login Box*/
 
 #logindiv {
   padding: 2.5em;
@@ -457,16 +476,31 @@ div.order-item-border {
   Social Media Bar
 =================== */
 
+
 .icon-bar {
   position: fixed;
-  top: 50%;
-  margin-left:5em;
-  -webkit-transform: translateY(-50%);
+  top: 25%;
+  margin-left: 2em;
+  /*-webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-50%);*/
+  z-index: 9999;
 }
 
-.icon-bar a {
+.icon-bar button {
+  display: none;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 0.3em;
+  padding: 8px;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.icon-bar li {
   display: block;
   text-align: center;
   height: 40px;
@@ -479,7 +513,7 @@ div.order-item-border {
   border-radius: 50%;
 }
 
-.icon-bar a:hover {
+.icon-bar li:hover {
   background-color: #000;
 }
 
@@ -514,14 +548,29 @@ div.order-item-border {
 }
 
 
+
+
+
 /* ===================
     Media Queries
 =================== */
 
+@media only screen and (max-width: 1000px) {
+
+  .icon-bar button {
+    display: block;
+  }
+  ul.icon-bar {
+    top: 2%;
+    left:0%;
+    margin-left: 0;
+  }
+}
+
 
 @media only screen and (max-width: 767px) {
   div.favourite-item {
-      width: 45%;
+    width: 45%;
   }
   .favourite-item-img > img {
     border-radius: 10% 10% 0 0;
@@ -531,7 +580,7 @@ div.order-item-border {
   }
 
   div.food-item {
-      width: 45%;
+    width: 45%;
   }
 
   .food-item-img > img {
@@ -574,15 +623,14 @@ div.order-item-border {
   div.admin-item-confirm {
     border-radius: 0 0 .75em .75em;
   }
-
 }
 
 @media only screen and (max-width: 540px) {
   div.favourite-item {
-      width: 90%;
+    width: 90%;
   }
   div.food-item {
-      width: 90%;
+    width: 90%;
   }
   div.order-item-status > h5 {
     font-size: 13px;

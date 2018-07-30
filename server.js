@@ -50,10 +50,8 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-// app.use('/public',express.static("public"));
 
 // Mount all resource routes
-// app.use("/api/users", usersRoutes(knex));
 app.use("/orders", ordersRoutes(knex));
 app.use("/api/menu", foodsRoutes(knex));
 app.use("/api/admin", adminRoutes(knex));
@@ -135,15 +133,15 @@ app.post('/', (req, res) => {
 
               // TWILIO text message to restaurant
               console.log('Sending order received text to restaurant...');
-              // client.messages.create({
-              //     from: '+16049016036',
-              //     to: adminPhone,
-              //     body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
-              //   })
-              //   .then(message => {
-              //     console.log('Success! Text sent to restaurant');
-              //     console.log(`ID: ${message.sid}`)
-              //   }).done();
+              client.messages.create({
+                  from: '+16049016036',
+                  to: adminPhone,
+                  body: 'New online order!\n\n' + 'Order Number: ' + orderID + '\n' + 'Name: ' + orderName + '\n\n' + orderItems + '\nVisit admin page to confirm, or reply with order # followed by prep time in minutes.\neg: "' + orderID + ' 15"'
+                })
+                .then(message => {
+                  console.log('Success! Text sent to restaurant');
+                  console.log(`ID: ${message.sid}`)
+                }).done();
             });
         });
 
@@ -182,40 +180,41 @@ app.post('/sms', (req, res) => {
       let orderName = (name[0]).name;
       console.log('Sending confirmation text to customer...');
       // TWILIO text confirmation to customer
-      // client.messages.create({
-      //     from: '+16049016036',
-      //     to: adminPhone,
-      //     body: 'Hi ' + orderName + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://bendito.herokuapp.com/orders/' + id + ' to track your order.'
-      //   })
-      //   .then(message => {
-      //     console.log('Success! Confirmation text sent to customer');
-      //     console.log(`ID: ${message.sid}`)
-      //   }).done();
+      client.messages.create({
+          from: '+16049016036',
+          to: customerPhone,
+          body: 'Hi ' + orderName + '!\n\nWe have received your order and estimate it will be ready for pickup in ' + minutes + ' minutes.\n\nVisit http://bendito.herokuapp.com/orders/' + id + ' to track your order.'
+        })
+        .then(message => {
+          console.log('Success! Confirmation text sent to customer');
+          console.log
+(`ID: ${message.sid}`)
+        }).done();
     });
 
     // TWILIO text confirmation to restaurant
     console.log('Sending confirmation text to restaurant...');
-    // twiml.message('\n\nConfirmation sent!\n\nOrder #' + id + ' will be notified with their approximate pickup time (' + minutes + ' minutes)')
+    twiml.message('\n\nConfirmation sent!\n\nOrder #' + id + ' will be notified with their approximate pickup time (' + minutes + ' minutes)')
 
-    // res.writeHead(200, {
-    //   'Content-Type': 'text/xml'
-    // });
-    // res.end(
-    //   twiml.toString()
-    // );
+    res.writeHead(200, {
+      'Content-Type': 'text/xml'
+    });
+    res.end(
+      twiml.toString()
+    );
 });
 
 // TWILIO contact us outgoing call
 app.get("/contact", (req, res) => {
   console.log("Contacting Bendito's...");
-  // client.calls
-  //     .create({
-  //        url: 'http://aaronford.net/contact.xml',
-  //        to: adminPhone,
-  //        from: '+16049016036'
-  //      })
-  //     .then(call => console.log(call.sid))
-  //     .done();
+  client.calls
+      .create({
+         url: 'http://aaronford.net/contact.xml',
+         to: adminPhone,
+         from: '+16049016036'
+       })
+      .then(call => console.log(call.sid))
+      .done();
   res.redirect("/");
 });
 

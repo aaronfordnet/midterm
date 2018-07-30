@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app_menu.js"></script>
 </head>
@@ -27,15 +26,6 @@
     </a>
   </h1>
   </div>
-<div class="icon-bar">
-  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-  <a href="#" class="google"><i class="fa fa-google"></i></a>
-  <a href="#" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
-  <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-  <a href="#" class="envelope"><i class="fa fa-envelope"></i></a>
-</div>
-
   <!-- Menu and order total -->
   <div id="total" class="total-container clearfix">
     <div class="menu-float">
@@ -48,14 +38,21 @@
         <li><a class="anchor" href="/contact">Contact Us</a></li>
       </ul>
     </div>
-    <div class="menu-title"><span class="fa fa-shopping-cart"></span> <span class="item2 order-total" ></span></div>
+    <div class="menu-title"><span class="fa fa-shopping-cart"></span> <span class="item2 order-total"></span></div>
   </div>
-
+  <ul class="icon-bar">
+    <button id="smedia" class="socialmedia"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
+    <li href="#" class="facebook"><i class="fa fa-facebook"></i></li>
+    <li href="#" class="twitter"><i class="fa fa-twitter"></i></li>
+    <li href="#" class="google"><i class="fa fa-google"></i></li>
+    <li href="#" class="whatsapp"><i class="fa fa-whatsapp"></i></li>
+    <li href="#" class="pinterest"><i class="fa fa-pinterest"></i></li>
+    <li href="#" class="envelope"><i class="fa fa-envelope"></i></li>
+  </ul>
   <div class="container menu">
     <form class="menu" action="/" method="post">
       <h2 class="text-center">Order Takeout</h2>
       <!-- START Inster Area -->
-
       <!-- END Insert Area -->
       <div id="menu-favourites" class="row">
         <h3>Favourites</h3>
@@ -66,13 +63,11 @@
       <div id="menu-drink" class="row">
         <h3>Drinks</h3>
       </div>
-
       <div class="form-row text-center">
         <div class="total-container text-center" style="float: none;">
           <span>Total $</span>
           <span class="order-total"></span>
         </div>
-
         <div class="col-xs-12 ">
           <p class="error-message">Please enter your details below to submit your order</p>
         </div>
