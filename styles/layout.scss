@@ -29,11 +29,8 @@ a.logo:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  text-align: center;
   font-weight: bold;
-}
-
-h3 {
-  margin-top: 0;
 }
 
 h6 {
@@ -276,7 +273,7 @@ input.quantity {
 .container.admin {
   border-radius: 2em;
   max-width: 800px;
-  background: #f7f7f7;
+  background: #fcfcfc;
   padding: 20px 45px 40px;
   margin: 1.5em auto 1.5em;
 }
@@ -315,7 +312,7 @@ div.admin-item-status {
 }
 
 .admin-item-status > .status {
-  color: #555;
+  color: #444;
   font-weight: bold;
   text-align: center;
 }
@@ -367,7 +364,7 @@ div.order-item-row {
 
 div.order-item {
   background-color: #ccc;
-  padding: 10px;
+  padding: 5px 10px 10px;
   text-align: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -381,7 +378,7 @@ div.order-item-status {
 }
 
 .order-item-status > .status {
-  color: #555;
+  color: #444;
   text-align: center;
 }
 
@@ -410,6 +407,7 @@ div.order-item-border {
   text-align: center;
   border: 1px solid #777;
   border-radius: .25em;
+  margin-bottom: 10px;
 }
 
 
