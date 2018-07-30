@@ -64,6 +64,24 @@ exports.seed = function(knex, Promise) {
           description: "330ml can",
           imgurl: "/images/blueberry_fanta.jpg",
           price: 325,
+          category: 'drink'}),
+        knex('foods').insert({
+          name: 'Corona Extra Cerveza',
+          description: "Scorching hot 355ml bottle",
+          imgurl: "/images/corona.jpg",
+          price: 575,
+          category: 'drink'}),
+        knex('foods').insert({
+          name: 'Bottled Water',
+          description: "Tap/rain water on a 355ml bottle",
+          imgurl: "/images/water.jpg",
+          price: 99,
+          category: 'drink'}),
+        knex('foods').insert({
+          name: 'Second-tier Tequila Shot',
+          description: "Small but eficient. Lime not included.",
+          imgurl: "/images/tequila.jpg",
+          price: 695,
           category: 'drink'})
       ]);
     });
