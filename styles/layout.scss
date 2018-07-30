@@ -32,6 +32,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 h6 {
   margin: 0;
   padding: 0;
@@ -44,7 +48,7 @@ h6 {
   max-width: 800px;
   min-width: 400px;
   background-color: #f7f7f7;
-  padding: 20px 40px 40px;
+  padding: 20px 40px 50px 20px;
   margin: 10px auto 50px;
   border-radius: 2em;
 }
@@ -85,7 +89,7 @@ div.favourite-item-row {
 }
 
 
-@media (min-width:1201px) {
+@media (min-width:1221px) {
 
   div.total-container {
     font-weight: bold;
@@ -96,7 +100,7 @@ div.favourite-item-row {
 
   #total {
     position: absolute;
-    background-color: #fcfcfc;
+    background-color: #fdfdfd;
     padding: 1em 1.5em .75em;
     border-radius: .6em;
     border-color: black;
@@ -113,7 +117,7 @@ div.favourite-item-row {
   }
 }
 
-@media (max-width:1200px) {
+@media (max-width:1220px) {
   div.total-container {
     font-weight: bold;
     font-size: 1.8em;
@@ -123,7 +127,7 @@ div.favourite-item-row {
   #total {
     // display: none;
     // position: relative;
-    background-color: #fcfcfc;
+    background-color: #fdfdfd;
     padding: 0 .75em 0;
     border-radius: .75em;
     border-color: black;
@@ -273,12 +277,12 @@ input.quantity {
   border-radius: 2em;
   max-width: 800px;
   background: #f7f7f7;
-  padding: 20px 40px 40px;
+  padding: 20px 45px 40px;
   margin: 1.5em auto 1.5em;
 }
 
 .container.header {
-  background-color: #fcfcfc;
+  background-color: #fdfdfd;
   border-radius: 5em;
   padding: .25em;
   max-width: 700px;
@@ -311,7 +315,7 @@ div.admin-item-status {
 }
 
 .admin-item-status > .status {
-  color: #7b7b7b;
+  color: #555;
   font-weight: bold;
   text-align: center;
 }
@@ -377,7 +381,7 @@ div.order-item-status {
 }
 
 .order-item-status > .status {
-  color: #7b7b7b;
+  color: #555;
   text-align: center;
 }
 
@@ -405,6 +409,7 @@ div.order-item-border {
   padding: 10px;
   text-align: center;
   border: 1px solid #777;
+  border-radius: .25em;
 }
 
 
@@ -429,7 +434,7 @@ div.order-item-border {
   font-weight: bold;
   max-width: 350px;
   margin: 30px auto;
-  box-shadow: 0 0 0 2em white;
+  box-shadow: 0 0 0 2em #fdfdfd;
 }
 
 #logindiv input {
@@ -450,7 +455,7 @@ div.order-item-border {
 #login {
   max-width: 350px;
   margin: 0px;
-  background-color: white;
+  background-color: #fdfdfd;
   opacity: 1;
   position: relative;
   border: .25em solid #337ab7;
