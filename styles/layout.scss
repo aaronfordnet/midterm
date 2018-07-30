@@ -45,7 +45,7 @@ h6 {
   max-width: 800px;
   min-width: 400px;
   background-color: #f7f7f7;
-  padding: 20px 40px 50px 20px;
+  // padding: 20px 40px 50px 20px;
   margin: 10px auto 50px;
   border-radius: 2em;
 }
@@ -122,20 +122,15 @@ div.favourite-item-row {
   }
 
   #total {
-    // display: none;
-    // position: relative;
     background-color: #fdfdfd;
     padding: 0 .75em 0;
     border-radius: .75em;
     border-color: black;
-    // top: 150px;
-    // left: 38%;
     max-width: 750px;
     text-align: center;
     font-weight: bold;
     font-size: 1.8em;
     margin: 0 auto 0;
-    // z-index: 100;
   }
 
   .clearfix:after {
@@ -151,8 +146,6 @@ div.favourite-item-row {
   }
 
   #total ul {
-    // display: flex;   /* Allow the centering to work */
-    // display: float;
     list-style: none;
     text-align: center;
     padding: 0px;
@@ -414,6 +407,7 @@ div.order-item-border {
 /* ===================
   Admin Login Box
 =================== */
+
 #logindiv {
   padding: 2.5em;
   margin-top: 6em;
@@ -459,7 +453,10 @@ div.order-item-border {
   border: .25em solid #337ab7;
 }
 
-/*SOCIAL MEDIA BAR*/
+/* ===================
+  Social Media Bar
+=================== */
+
 .icon-bar {
   position: fixed;
   top: 50%;
