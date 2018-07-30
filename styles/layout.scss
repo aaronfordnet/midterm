@@ -56,7 +56,7 @@ h6 {
 
 .container.menu {
   max-width: 800px;
-  min-width: 400px;
+  min-width: 300px;
   background-color: #f7f7f7;
   padding: 20px 40px 50px 20px;
   margin: 10px auto 50px;
@@ -284,6 +284,7 @@ input.quantity {
 .container.admin {
   border-radius: 2em;
   max-width: 800px;
+  min-width: 300px;
   background: #fcfcfc;
   padding: 20px 45px 40px;
   margin: 1.5em auto 1.5em;
@@ -485,6 +486,7 @@ div.order-item-border {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);*/
   z-index: 9999;
+  list-style: none;
 }
 
 .icon-bar button {
@@ -498,6 +500,7 @@ div.order-item-border {
   color: black;
   font-size: 20px;
   border-radius: 50%;
+  background-color: white;
 }
 
 .icon-bar li {
@@ -564,6 +567,9 @@ div.order-item-border {
     top: 2%;
     left:0%;
     margin-left: 0;
+  }
+  .icon-bar li{
+    display: none;
   }
 }
 
