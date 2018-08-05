@@ -4,11 +4,13 @@ A responsive, team-built food-ordering and order management application that com
 
 ## Final Product
 
-!["Screenshot of ..."]()
-!["Screenshot of ..."]()
-!["Screenshot of ..."]()
-!["Screenshot of ..."]()
-!["Screenshot of ..."]()
+!["Screenshot of responsive menu"](https://github.com/aaronfordnet/midterm/blob/master/docs/responsive.png?raw=true)
+!["Screenshot of menu page"](https://github.com/aaronfordnet/midterm/blob/master/docs/order-page.png?raw=true)
+!["Screenshot of placing order"](https://github.com/aaronfordnet/midterm/blob/master/docs/place-order.png?raw=true)
+!["Screenshot of order status page"](https://github.com/aaronfordnet/midterm/blob/master/docs/order-placed.png?raw=true)
+!["Screenshot of admin login"](https://github.com/aaronfordnet/midterm/blob/master/docs/admin-page.png?raw=true)
+!["Screenshot of admin orders page"](https://github.com/aaronfordnet/midterm/blob/master/docs/orders-confirm.png?raw=true)
+!["Screenshot of admin orders updated"](https://github.com/aaronfordnet/midterm/blob/master/docs/orders-status.png?raw=true)
 
 ## Project Setup
 
