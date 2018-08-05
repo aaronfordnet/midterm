@@ -27,8 +27,9 @@ A responsive, team-built food-ordering and order management application that com
   - Check the migrations folder to see what gets created in the DB
 6. Run the seed: `npm run knex seed:run`
   - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+7. Ensure ENV is set to 'development'
+8. Run the server: `npm run local`
+9. Visit `http://localhost:8080/`
 
 ## Dependencies
 
